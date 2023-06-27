@@ -1,0 +1,46 @@
+<nav
+  class="px-2 sm:px-4 py-2.5 fixed w-full z-20 top-0 left-0 border-r rtl:border-r-0 rtl:border-l border-gray-700"
+  [ngClass]="{ 'bg-transparent': !isScrolled, 'bg-gray-200': isScrolled }"
+>
+  <div class="container flex flex-wrap items-center justify-center mx-auto">
+    <div
+      class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
+      id="navbar-sticky"
+      data-te-collapse-item
+    >
+      <ul
+        class="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0"
+      >
+        <li>
+          <a
+            routerLink=""
+            class="block py-2 pl-3 pr-4 text-pink-500 bg-blue-700 rounded md:bg-transparent md:p-0"
+            aria-current="page"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a
+            href="#about"
+            class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 hover:text-pink-500 md:hover:bg-transparent md:hover:text-pink-500 md:p-0"
+            >About</a
+          >
+        </li>
+        <li>
+          <a
+            href="#project"
+            class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 hover:text-pink-500 md:hover:bg-transparent md:hover:text-pink-500 md:p-0"
+            >Drive with us</a
+          >
+        </li>
+        <li>
+          <a
+            [routerLink]="['/peserta']"
+            class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 hover:text-pink-500 md:hover:bg-transparent md:hover:text-pink-500 md:p-0"
+            >Ride with us</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
