@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +7,28 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor (public router:Router){}
+  constructor(public router: Router, private route: ActivatedRoute) { }
   title = 'taxi-app';
+  isLoginPage(): boolean {
+    return this.router.routerState.snapshot.url.includes('login');
+  }
+
+  isNotFoundPage() {
+    const currentRoute = this.getCurrentRoute(this.router);
+    console.log(currentRoute);
+
+    // return currentRoute && currentRoute.routeConfig && currentRoute.routeConfig.path === '**';
+  }
+
+  private getCurrentRoute(router: Router): any {
+    let currentRoute = null;
+    router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        currentRoute = router.routerState.root.snapshot;
+      }
+    });
+    return currentRoute;
+  }
+
+
 }

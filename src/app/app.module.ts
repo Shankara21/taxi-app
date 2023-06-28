@@ -14,6 +14,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CarsIndexComponent } from './dashboard/cars/cars-index/cars-index.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { SidebarDashboardComponent } from './components/sidebar-dashboard/sidebar-dashboard.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     NotFoundComponent,
     CarsIndexComponent,
     SidebarComponent,
+    SidebarDashboardComponent,
   ],
   imports: [
     BrowserModule,
