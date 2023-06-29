@@ -1,7 +1,7 @@
-<div class="bg-gray-90">
+<div class="bg-gray-900">
   <div class="hero min-h-screen">
     <div
-      class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+      class="absolute transform-gpu overflow-hidden blur-3xl sm:-top-80"
       aria-hidden="true"
     >
       <div
@@ -70,7 +70,7 @@
             />
           </li>
         </ul>
-        <div class="flex justify-end mt-6">
+        <div class="flex justify-center mt-6">
           <button
             class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
           >
@@ -78,10 +78,14 @@
           </button>
         </div>
       </form>
+      <div class="flex justify-center mt-6">
+        <p class="text-gray-200">already have account?</p> 
+        <a routerLink="/login" class="text-indigo-300">login</a>
+    </div>
     </section>
   </div>
   <div
-    class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
+    class="absolute pl-60 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
     aria-hidden="true"
   >
     <div
