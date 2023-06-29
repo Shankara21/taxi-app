@@ -1,0 +1,67 @@
+<app-navbar-dashboard [breadcrumbs]="breadcrumbData"></app-navbar-dashboard>
+<div class="p-4">
+  <div class="flex justify-between items-center mb-6">
+    <p class="text-5xl font-bold text-[#f4f5f5] text-center p-3">List Users</p>
+  </div>
+  <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+      <thead
+        class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+      >
+        <tr>
+          <th scope="col" class="px-6 py-3">No</th>
+          <th scope="col" class="px-6 py-3">Product name</th>
+          <th scope="col" class="px-6 py-3">Color</th>
+          <th scope="col" class="px-6 py-3">Category</th>
+          <th scope="col" class="px-6 py-3">Price</th>
+          <th scope="col" class="px-6 py-3 text-center">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+          <th
+            scope="row"
+            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+          >
+            1
+          </th>
+
+          <td class="px-6 py-4">Macbook</td>
+          <td class="px-6 py-4">Silver</td>
+          <td class="px-6 py-4">Laptop</td>
+          <td class="px-6 py-4">$2999</td>
+          <td class="px-6 py-4 text-center">
+            <div class="flex gap-4 justify-center items-center">
+              <a
+                routerLink="/dashboard/users/1"
+                class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+              >
+                <img
+                  src="/assets/img/pencil.png"
+                  class="w-10 hover:rotate-7 duration-300"
+                  alt=""
+                />
+              </a>
+              <label for="my_modal_7"
+                ><img
+                  src="/assets/img/delete.png"
+                  class="w-10 hover:rotate-7 duration-300 cursor-pointer"
+                  alt=""
+              /></label>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Modal Delete -->
+<input type="checkbox" id="my_modal_7" class="modal-toggle" />
+<div class="modal">
+  <div class="modal-box bg-[#2a2d3e] text-[#f4f5f5]">
+    <h3 class="text-lg font-bold">Hello!</h3>
+    <p class="py-4">This modal works with a hidden checkbox!</p>
+  </div>
+  <label class="modal-backdrop cursor-pointer" for="my_modal_7">Close</label>
+</div>

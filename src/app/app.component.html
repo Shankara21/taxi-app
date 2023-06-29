@@ -1,7 +1,8 @@
 <ng-container *ngIf="router.url.includes('dashboard'); else elseBlock">
-  <div class="flex w-full h-screen">
-    <app-sidebar-dashboard class="w-[15%]"></app-sidebar-dashboard>
-    <div class="w-[85%] h-full bg-gray-200 p-2">
+  <div class="flex w-full">
+    <app-sidebar-dashboard class="w-[15%] bg-[#2a2d3e]"></app-sidebar-dashboard>
+    <div class="w-[85%] h-screen overflow-auto bg-[#212332] p-2">
+      
       <router-outlet> </router-outlet>
     </div>
   </div>

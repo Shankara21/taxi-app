@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./index.component.css']
 })
 export class IndexComponent {
-
+  breadcrumbData = [
+    { label: 'Home', link: '/dashboard' },
+  ];
 }

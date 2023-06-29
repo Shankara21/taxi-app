@@ -8,6 +8,8 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { AboutComponent } from './pages/about/about.component';
 import { DriversComponent } from './pages/drivers/drivers.component';
+import { IndexUserComponent } from './dashboard/users/index-user/index-user.component';
+import { EditUserComponent } from './dashboard/users/edit-user/edit-user.component';
 
 const routes: Routes = [
   // Routing untuk authentication
@@ -20,12 +22,15 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'driver', component: DriversComponent },
 
+
   // Routing untuk dashboard
   {
     path: 'dashboard',
     children: [
       { path: '', component: IndexComponent },
-      { path: 'cars', component: CarsIndexComponent }
+      { path: 'cars', component: CarsIndexComponent },
+      { path: 'users', component: IndexUserComponent },
+      { path: 'users/:id', component: EditUserComponent },
     ]
   },
 

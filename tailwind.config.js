@@ -2,7 +2,16 @@
 module.exports = {
   content: ["./src/**/*.{html,ts}"],
   theme: {
-    extend: {},
+    extend: {
+      rotate: {
+        7: "7deg",
+      },
+    },
+  },
+  variants: {
+    extend: {
+      rotate: ["hover"],
+    },
   },
   plugins: [require("daisyui")],
 };
