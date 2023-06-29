@@ -1,40 +1,65 @@
+<div class="toast toast-top toast-end z-50" *ngIf="alert">
+  <div class="alert alert-success">
+    <span class="flex gap-3 items-center">
+      <svg
+        width="30px"
+        height="30px"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect width="24" height="24" />
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12ZM15.7071 9.29289C16.0976 9.68342 16.0976 10.3166 15.7071 10.7071L12.0243 14.3899C11.4586 14.9556 10.5414 14.9556 9.97568 14.3899L8.29289 12.7071C7.90237 12.3166 7.90237 11.6834 8.29289 11.2929C8.68342 10.9024 9.31658 10.9024 9.70711 11.2929L11 12.5858L14.2929 9.29289C14.6834 8.90237 15.3166 8.90237 15.7071 9.29289Z"
+          fill="#323232"
+        />
+      </svg>
+      {{ alertMessage }}
+    </span>
+  </div>
+</div>
 <app-navbar-dashboard [breadcrumbs]="breadcrumbData"></app-navbar-dashboard>
 <div class="p-4">
   <div class="flex justify-between items-center mb-6">
     <p class="text-5xl font-bold text-[#f4f5f5] text-center p-3">List Users</p>
   </div>
   <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-      <thead
-        class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
-      >
+    <table class="w-full text-sm text-left text-gray-400">
+      <thead class="text-xs uppercase bg-gray-700 text-gray-400">
         <tr>
-          <th scope="col" class="px-6 py-3">No</th>
-          <th scope="col" class="px-6 py-3">Product name</th>
-          <th scope="col" class="px-6 py-3">Color</th>
-          <th scope="col" class="px-6 py-3">Category</th>
-          <th scope="col" class="px-6 py-3">Price</th>
+          <th scope="col" class="px-6 py-3 text-center">No</th>
+          <th scope="col" class="px-6 py-3 text-center">Name</th>
+          <th scope="col" class="px-6 py-3 text-center">Email</th>
+          <th scope="col" class="px-6 py-3 text-center">Phone</th>
+          <th scope="col" class="px-6 py-3 text-center">Status</th>
           <th scope="col" class="px-6 py-3 text-center">Action</th>
         </tr>
       </thead>
-      <tbody>
-        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+      <tbody *ngIf="data.length">
+        <tr
+          class="border-b bg-gray-800 border-gray-700"
+          *ngFor="let item of data"
+        >
           <th
             scope="row"
-            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+            class="px-6 py-4 font-medium whitespace-nowrap text-white text-center"
           >
-            1
+            {{ item.index }}
           </th>
 
-          <td class="px-6 py-4">Macbook</td>
-          <td class="px-6 py-4">Silver</td>
-          <td class="px-6 py-4">Laptop</td>
-          <td class="px-6 py-4">$2999</td>
+          <td class="px-6 py-4 text-center">{{ item.name }}</td>
+          <td class="px-6 py-4 text-center">{{ item.email }}</td>
+          <td class="px-6 py-4 text-center">{{ item.telephone }}</td>
+          <td class="px-6 py-4 text-center">
+            {{ item.isActive ? "Active" : "Inactive" }}
+          </td>
           <td class="px-6 py-4 text-center">
             <div class="flex gap-4 justify-center items-center">
               <a
                 routerLink="/dashboard/users/1"
-                class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                class="font-medium hover:underline"
               >
                 <img
                   src="/assets/img/pencil.png"
@@ -42,13 +67,21 @@
                   alt=""
                 />
               </a>
-              <label for="my_modal_7"
-                ><img
+              <label for="my_modal_7" (click)="getData(item.id)">
+                <img
                   src="/assets/img/delete.png"
                   class="w-10 hover:rotate-7 duration-300 cursor-pointer"
                   alt=""
-              /></label>
+                />
+              </label>
             </div>
+          </td>
+        </tr>
+      </tbody>
+      <tbody *ngIf="!data.length">
+        <tr class="border-b bg-gray-800 border-gray-700">
+          <td colspan="6" class="px-6 py-4 text-center text-2xl font-semibold">
+            No Data
           </td>
         </tr>
       </tbody>
@@ -58,10 +91,22 @@
 
 <!-- Modal Delete -->
 <input type="checkbox" id="my_modal_7" class="modal-toggle" />
-<div class="modal">
+<div class="modal" *ngIf="dataModal">
   <div class="modal-box bg-[#2a2d3e] text-[#f4f5f5]">
-    <h3 class="text-lg font-bold">Hello!</h3>
-    <p class="py-4">This modal works with a hidden checkbox!</p>
+    <h3 class="text-lg font-bold">Are you sure?</h3>
+    <p class="py-4">This action will delete the user permanently.</p>
+    <div class="flex justify-end gap-4 items-center">
+      <label class="modal-close cursor-pointer" for="my_modal_7">
+        Cancel
+      </label>
+      <label
+        for="my_modal_7"
+        class="px-4 py-2 bg-red-500 rounded-md hover:bg-red-600 cursor-pointer"
+        (click)="deleteData(dataModal.id)"
+      >
+        Delete
+      </label>
+    </div>
+    <label class="modal-backdrop cursor-pointer" for="my_modal_7">Close</label>
   </div>
-  <label class="modal-backdrop cursor-pointer" for="my_modal_7">Close</label>
 </div>
