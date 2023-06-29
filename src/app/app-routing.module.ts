@@ -8,6 +8,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { AboutComponent } from './pages/about/about.component';
 import { DriversComponent } from './pages/drivers/drivers.component';
+import { BookComponent } from './book/book.component';
 
 const routes: Routes = [
   // Routing untuk authentication
@@ -19,7 +20,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
   { path: 'driver', component: DriversComponent },
-
+  { path: 'book', component: BookComponent },
   // Routing untuk dashboard
   {
     path: 'dashboard',

@@ -17,6 +17,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SidebarDashboardComponent } from './components/sidebar-dashboard/sidebar-dashboard.component';
 import { AboutComponent } from './pages/about/about.component';
 import { DriversComponent } from './pages/drivers/drivers.component';
+import { BookComponent } from './book/book.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { DriversComponent } from './pages/drivers/drivers.component';
     SidebarDashboardComponent,
     AboutComponent,
     DriversComponent,
+    BookComponent,
   ],
   imports: [
     BrowserModule,
