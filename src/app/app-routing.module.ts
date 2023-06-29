@@ -6,6 +6,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './auth/login/login.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { RegisterComponent } from './auth/register/register.component';
+import { AboutComponent } from './pages/about/about.component';
+import { DriversComponent } from './pages/drivers/drivers.component';
 
 const routes: Routes = [
   // Routing untuk authentication
@@ -15,6 +17,8 @@ const routes: Routes = [
   // Routing untuk landing page
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
+  { path: 'about', component: AboutComponent },
+  { path: 'driver', component: DriversComponent },
 
   // Routing untuk dashboard
   {

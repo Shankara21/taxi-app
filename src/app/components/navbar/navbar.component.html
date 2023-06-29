@@ -1,6 +1,9 @@
 <nav
   class="px-2 sm:px-4 py-2.5 fixed w-full z-20 top-0 left-0 border-r rtl:border-r-0 rtl:border-l border-gray-700"
-  [ngClass]="{ 'bg-transparent': !isScrolled, 'bg-gray-200': isScrolled }"
+  [ngClass]="{
+    'bg-transparent': !isScrolled,
+    'bg-gray-800 bg-opacity-70': isScrolled
+  }"
 >
   <div class="container flex flex-wrap items-center justify-center mx-auto">
     <div
@@ -13,34 +16,39 @@
       >
         <li>
           <a
-            routerLink=""
-            class="block py-2 pl-3 pr-4 text-pink-500 bg-blue-700 rounded md:bg-transparent md:p-0"
+            routerLink="/home"
+            routerLinkActive="active"
+            class="block py-2 pl-3 pr-4 text-gray-200 hover:text-blue-500 rounded md:bg-transparent md:p-0"
             aria-current="page"
-            >Home</a
-          >
+            >Home
+          </a>
         </li>
         <li>
           <a
-            href="#about"
-            class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 hover:text-pink-500 md:hover:bg-transparent md:hover:text-pink-500 md:p-0"
+            routerLink="/about"
+            routerLinkActive="active"
+            class="block py-2 pl-3 pr-4 text-gray-200 rounded hover:text-blue-500 md:hover:bg-transparent md:p-0"
             >About</a
           >
         </li>
         <li>
           <a
-            href="#project"
-            class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 hover:text-pink-500 md:hover:bg-transparent md:hover:text-pink-500 md:p-0"
+            routerLink="/driver"
+            routerLinkActive="active"
+            class="block py-2 pl-3 pr-4 text-gray-200 rounded hover:bg-blue-100 hover:text-blue-500 md:hover:bg-transparent md:p-0"
             >Drive with us</a
           >
         </li>
         <li>
           <a
-            [routerLink]="['/peserta']"
-            class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 hover:text-pink-500 md:hover:bg-transparent md:hover:text-pink-500 md:p-0"
+            routerLink="/book"
+            routerLinkActive="active"
+            class="block py-2 pl-3 pr-4 text-gray-200 rounded hover:bg-blue-100 hover:text-blue-500 md:hover:bg-transparent md:p-0"
             >Ride with us</a
           >
         </li>
       </ul>
     </div>
+    <!-- <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Log in <span aria-hidden="true">&rarr;</span></a> -->
   </div>
 </nav>

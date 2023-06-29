@@ -15,6 +15,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CarsIndexComponent } from './dashboard/cars/cars-index/cars-index.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SidebarDashboardComponent } from './components/sidebar-dashboard/sidebar-dashboard.component';
+import { AboutComponent } from './pages/about/about.component';
+import { DriversComponent } from './pages/drivers/drivers.component';
 
 
 @NgModule({
@@ -30,6 +32,8 @@ import { SidebarDashboardComponent } from './components/sidebar-dashboard/sideba
     CarsIndexComponent,
     SidebarComponent,
     SidebarDashboardComponent,
+    AboutComponent,
+    DriversComponent,
   ],
   imports: [
     BrowserModule,
