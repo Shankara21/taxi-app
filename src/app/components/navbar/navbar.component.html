@@ -5,7 +5,8 @@
     'bg-gray-800 bg-opacity-70': isScrolled
   }"
 >
-  <div class="container flex flex-wrap items-center justify-center mx-auto">
+
+  <div class="flex items-center justify-end mx-auto">
     <div
       class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
       id="navbar-sticky"
@@ -49,6 +50,40 @@
         </li>
       </ul>
     </div>
+    <div
+    class="items-end justify-end hidden w-full md:flex md:w-auto md:order-1"
+    id="navbar-sticky"
+    data-te-collapse-item
+    >
+      <ul
+      class="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0"
+      > 
+        <li>
+          <a
+            routerLink="/login"
+            routerLinkActive="active"
+            class="block py-2 pl-3 pr-4 text-gray-200 rounded hover:bg-blue-100 hover:text-blue-500 md:hover:bg-transparent md:p-0"
+            >Login</a
+          >
+        </li>
+        <li>
+          <p
+            class="block py-2 pl-3 pr-4 text-gray-200 rounded hover:bg-blue-100 hover:text-blue-500 md:hover:bg-transparent md:p-0"
+            >|</p
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/register"
+            routerLinkActive="active"
+            class="block py-2 pl-3 pr-4 text-gray-200 rounded hover:bg-blue-100 hover:text-blue-500 md:hover:bg-transparent md:p-0"
+            >Register</a
+          >
+        </li>
+      </ul>
+    </div>
     <!-- <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Log in <span aria-hidden="true">&rarr;</span></a> -->
   </div>
+
+  
 </nav>

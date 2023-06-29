@@ -9,10 +9,13 @@ import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 export class AppComponent {
   constructor(public router: Router, private route: ActivatedRoute) { }
   title = 'taxi-app';
+  isRegisterPage(): boolean {
+    return this.router.routerState.snapshot.url.includes('register');
+  }
+  
   isLoginPage(): boolean {
     return this.router.routerState.snapshot.url.includes('login');
   }
-
   isNotFoundPage() {
     const currentRoute = this.getCurrentRoute(this.router);
     console.log(currentRoute);

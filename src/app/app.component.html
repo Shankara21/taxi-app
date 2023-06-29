@@ -9,7 +9,7 @@
 </ng-container>
 
 <ng-template #elseBlock class="overflow-x-hidden">
-  <ng-container *ngIf="!(isLoginPage() || isNotFoundPage())">
+  <ng-container *ngIf="!(isLoginPage() || isNotFoundPage() || isRegisterPage())">
     <app-navbar></app-navbar>
   </ng-container>
 
