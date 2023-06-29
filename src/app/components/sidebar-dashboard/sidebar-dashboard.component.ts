@@ -1,3 +1,4 @@
+import { AuthService } from './../../services/auth/auth.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -7,5 +8,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./sidebar-dashboard.component.css']
 })
 export class SidebarDashboardComponent {
-  constructor(public router: Router) { }
+  constructor(public router: Router, private AuthService: AuthService) { }
+
+  logout() {
+    this.AuthService.DeleteToken();
+    this.router.navigateByUrl('/login');
+  }
 }

@@ -2,18 +2,21 @@
   <div class="flex w-full">
     <app-sidebar-dashboard class="w-[15%] bg-[#2a2d3e]"></app-sidebar-dashboard>
     <div class="w-[85%] h-screen overflow-auto bg-[#212332] p-2">
-      
       <router-outlet> </router-outlet>
     </div>
   </div>
 </ng-container>
 
 <ng-template #elseBlock class="overflow-x-hidden">
-  <ng-container *ngIf="!(isLoginPage() || isNotFoundPage() || isRegisterPage())">
+  <ng-container
+    *ngIf="!(isLoginPage() || isNotFoundPage() || isRegisterPage())"
+  >
     <app-navbar></app-navbar>
   </ng-container>
-
-  <div class="w-full mx-auto bg-blue-500 h-full"></div>
   <router-outlet> </router-outlet>
-  <app-footer></app-footer>
+  <ng-container
+    *ngIf="!router.url.includes('login') && !router.url.includes('register')"
+  >
+    <app-footer></app-footer>
+  </ng-container>
 </ng-template>
