@@ -8,7 +8,10 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { AboutComponent } from './pages/about/about.component';
 import { DriversComponent } from './pages/drivers/drivers.component';
-import { BookComponent } from './book/book.component';
+import { BookComponent } from './pages/book/book.component';
+import { ReserveComponent } from './pages/reserve/reserve.component';
+import { RideComponent } from './pages/ride/ride.component';
+import { OrderComponent } from './pages/order/order.component';
 
 const routes: Routes = [
   // Routing untuk authentication
@@ -20,7 +23,10 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
   { path: 'driver', component: DriversComponent },
+  { path: 'ride', component: RideComponent },
   { path: 'book', component: BookComponent },
+  { path: 'reserve', component: ReserveComponent },
+  { path: 'order', component: OrderComponent },
   // Routing untuk dashboard
   {
     path: 'dashboard',

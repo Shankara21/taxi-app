@@ -17,7 +17,10 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SidebarDashboardComponent } from './components/sidebar-dashboard/sidebar-dashboard.component';
 import { AboutComponent } from './pages/about/about.component';
 import { DriversComponent } from './pages/drivers/drivers.component';
-import { BookComponent } from './book/book.component';
+import { BookComponent } from './pages/book/book.component';
+import { ReserveComponent } from './pages/reserve/reserve.component';
+import { RideComponent } from './pages/ride/ride.component';
+import { OrderComponent } from './pages/order/order.component';
 
 
 @NgModule({
@@ -36,6 +39,9 @@ import { BookComponent } from './book/book.component';
     AboutComponent,
     DriversComponent,
     BookComponent,
+    ReserveComponent,
+    RideComponent,
+    OrderComponent,
   ],
   imports: [
     BrowserModule,
