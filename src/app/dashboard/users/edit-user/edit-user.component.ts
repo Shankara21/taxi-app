@@ -9,6 +9,6 @@ export class EditUserComponent {
   breadcrumbData = [
     { label: 'Home', link: '/dashboard' },
     { label: 'Users', link: '/dashboard/users' },
-    { label: 'Edit User', link:'/dashboard/users/**' },
+    { label: 'Edit User', link: '/dashboard/users/**' },
   ];
 }

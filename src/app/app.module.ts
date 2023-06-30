@@ -25,12 +25,19 @@ import { ReserveComponent } from './pages/reserve/reserve.component';
 import { RideComponent } from './pages/ride/ride.component';
 import { OrderComponent } from './pages/order/order.component';
 import { OrderStatusComponent } from './pages/order-status/order-status.component';
+import { NavbarDashboardComponent } from './components/navbar-dashboard/navbar-dashboard.component';
+import { IndexUserComponent } from './dashboard/users/index-user/index-user.component';
+import { EditUserComponent } from './dashboard/users/edit-user/edit-user.component';
+import { IndexDriverComponent } from './dashboard/drivers/index-driver/index-driver.component';
+import { EditDriverComponent } from './dashboard/drivers/edit-driver/edit-driver.component';
+import { ShowDriverComponent } from './dashboard/drivers/show-driver/show-driver.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
+    NavbarDashboardComponent,
     FooterComponent,
     LoginComponent,
     RegisterComponent,
@@ -47,6 +54,11 @@ import { OrderStatusComponent } from './pages/order-status/order-status.componen
     RideComponent,
     OrderComponent,
     OrderStatusComponent,
+    IndexUserComponent,
+    EditUserComponent,
+    IndexDriverComponent,
+    EditDriverComponent,
+    ShowDriverComponent
   ],
   imports: [
     BrowserModule,

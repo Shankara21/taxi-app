@@ -17,6 +17,9 @@ import { IndexUserComponent } from './dashboard/users/index-user/index-user.comp
 import { EditUserComponent } from './dashboard/users/edit-user/edit-user.component';
 import { AuthGuard } from './services/middleware/auth.guard';
 import { IsAdminGuard } from './services/middleware/is-admin.guard';
+import { ShowDriverComponent } from './dashboard/drivers/show-driver/show-driver.component';
+import { EditDriverComponent } from './dashboard/drivers/edit-driver/edit-driver.component';
+import { IndexDriverComponent } from './dashboard/drivers/index-driver/index-driver.component';
 
 const routes: Routes = [
   // Routing untuk authentication
@@ -33,12 +36,16 @@ const routes: Routes = [
   { path: 'reserve', component: ReserveComponent },
   { path: 'order', component: OrderComponent },
   { path: 'status', component: OrderStatusComponent },
+
   // Routing untuk dashboard
   {
     path: 'dashboard',
     children: [
       { path: '', component: IndexComponent },
       { path: 'cars', component: CarsIndexComponent },
+      { path: 'drivers', component: IndexDriverComponent },
+      { path: 'drivers/:id', component: ShowDriverComponent },
+      { path: 'drivers/edit/:id', component: EditDriverComponent },
       { path: 'users', component: IndexUserComponent },
       { path: 'users/:id', component: EditUserComponent },
     ],

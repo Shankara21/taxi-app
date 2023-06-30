@@ -83,6 +83,9 @@
       </a>
       <a
         routerLink="/dashboard/drivers"
+        [ngClass]="
+          router.url.includes('drivers') ? 'bg-[#329af9] text-white' : ''
+        "
         class="flex gap-3 justify-start items-center hover:bg-[#329af9] hover:text-white px-2 py-3 rounded-xl my-1"
       >
         <svg

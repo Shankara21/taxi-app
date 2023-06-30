@@ -31,7 +31,7 @@
             >About</a
           >
         </li>
-        <li>
+        <li *ngIf="user.role !== 'driver'">
           <a
             routerLink="/driver"
             routerLinkActive="active"
@@ -39,7 +39,7 @@
             >Drive with us</a
           >
         </li>
-        <li>
+        <li *ngIf="user.role !== 'customer'">
           <a
             routerLink="/order"
             routerLinkActive="active"
@@ -47,7 +47,7 @@
             >Order list</a
           >
         </li>
-        <li>
+        <li *ngIf="user.role !== 'driver'">
           <a
             routerLink="/ride"
             routerLinkActive="active"
@@ -64,7 +64,7 @@
       data-te-collapse-item
     >
       <ul
-      class="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0"
+        class="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0"
       >
         <li>
           <a
@@ -107,7 +107,9 @@
           tabindex="0"
           class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
         >
-          <li class="text-center pt-1 cursor-default select-none">Hi, {{ user.name }}</li>
+          <li class="text-center pt-1 cursor-default select-none">
+            Hi, {{ user.name }}
+          </li>
           <div class="divider my-1"></div>
           <li *ngIf="user.role === 'admin'">
             <a routerLink="/dashboard"> Dashboard </a>
@@ -182,6 +184,4 @@
     </div>
     <!-- <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Log in <span aria-hidden="true">&rarr;</span></a> -->
   </div>
-
-
 </nav>

@@ -23,7 +23,7 @@
 <app-navbar-dashboard [breadcrumbs]="breadcrumbData"></app-navbar-dashboard>
 <div class="p-4">
   <div class="flex justify-between items-center mb-6">
-    <p class="text-5xl font-bold text-[#f4f5f5] text-center p-3">List Users</p>
+    <p class="text-5xl font-bold text-[#f4f5f5] text-center p-3">List Drivers</p>
   </div>
   <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
     <table class="w-full text-sm text-left text-gray-400">
@@ -58,7 +58,17 @@
           <td class="px-6 py-4 text-center">
             <div class="flex gap-4 justify-center items-center">
               <a
-                routerLink="/dashboard/users/{{ item.id }}"
+                routerLink="/dashboard/drivers/{{ item.id }}"
+                class="font-medium hover:underline"
+              >
+                <img
+                  src="/assets/img/eye.png"
+                  class="w-10 hover:rotate-7 duration-300"
+                  alt=""
+                />
+              </a>
+              <a
+                routerLink="/dashboard/drivers/edit/{{ item.id }}"
                 class="font-medium hover:underline"
               >
                 <img
