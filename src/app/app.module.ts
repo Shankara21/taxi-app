@@ -21,6 +21,7 @@ import { BookComponent } from './pages/book/book.component';
 import { ReserveComponent } from './pages/reserve/reserve.component';
 import { RideComponent } from './pages/ride/ride.component';
 import { OrderComponent } from './pages/order/order.component';
+import { OrderStatusComponent } from './pages/order-status/order-status.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { OrderComponent } from './pages/order/order.component';
     ReserveComponent,
     RideComponent,
     OrderComponent,
+    OrderStatusComponent,
   ],
   imports: [
     BrowserModule,

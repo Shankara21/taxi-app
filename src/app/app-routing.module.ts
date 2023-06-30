@@ -12,6 +12,7 @@ import { BookComponent } from './pages/book/book.component';
 import { ReserveComponent } from './pages/reserve/reserve.component';
 import { RideComponent } from './pages/ride/ride.component';
 import { OrderComponent } from './pages/order/order.component';
+import { OrderStatusComponent } from './pages/order-status/order-status.component';
 
 const routes: Routes = [
   // Routing untuk authentication
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'book', component: BookComponent },
   { path: 'reserve', component: ReserveComponent },
   { path: 'order', component: OrderComponent },
+  { path: 'status', component: OrderStatusComponent },
   // Routing untuk dashboard
   {
     path: 'dashboard',
