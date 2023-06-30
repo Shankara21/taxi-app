@@ -20,9 +20,11 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SidebarDashboardComponent } from './components/sidebar-dashboard/sidebar-dashboard.component';
 import { AboutComponent } from './pages/about/about.component';
 import { DriversComponent } from './pages/drivers/drivers.component';
-import { IndexUserComponent } from './dashboard/users/index-user/index-user.component';
-import { NavbarDashboardComponent } from './components/navbar-dashboard/navbar-dashboard.component';
-import { EditUserComponent } from './dashboard/users/edit-user/edit-user.component';
+import { BookComponent } from './pages/book/book.component';
+import { ReserveComponent } from './pages/reserve/reserve.component';
+import { RideComponent } from './pages/ride/ride.component';
+import { OrderComponent } from './pages/order/order.component';
+import { OrderStatusComponent } from './pages/order-status/order-status.component';
 
 
 @NgModule({
@@ -40,9 +42,11 @@ import { EditUserComponent } from './dashboard/users/edit-user/edit-user.compone
     SidebarDashboardComponent,
     AboutComponent,
     DriversComponent,
-    IndexUserComponent,
-    NavbarDashboardComponent,
-    EditUserComponent,
+    BookComponent,
+    ReserveComponent,
+    RideComponent,
+    OrderComponent,
+    OrderStatusComponent,
   ],
   imports: [
     BrowserModule,

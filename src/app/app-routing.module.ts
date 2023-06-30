@@ -8,6 +8,11 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { AboutComponent } from './pages/about/about.component';
 import { DriversComponent } from './pages/drivers/drivers.component';
+import { BookComponent } from './pages/book/book.component';
+import { ReserveComponent } from './pages/reserve/reserve.component';
+import { RideComponent } from './pages/ride/ride.component';
+import { OrderComponent } from './pages/order/order.component';
+import { OrderStatusComponent } from './pages/order-status/order-status.component';
 import { IndexUserComponent } from './dashboard/users/index-user/index-user.component';
 import { EditUserComponent } from './dashboard/users/edit-user/edit-user.component';
 import { AuthGuard } from './services/middleware/auth.guard';
@@ -23,8 +28,11 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
   { path: 'driver', component: DriversComponent },
-
-
+  { path: 'ride', component: RideComponent },
+  { path: 'book', component: BookComponent },
+  { path: 'reserve', component: ReserveComponent },
+  { path: 'order', component: OrderComponent },
+  { path: 'status', component: OrderStatusComponent },
   // Routing untuk dashboard
   {
     path: 'dashboard',
