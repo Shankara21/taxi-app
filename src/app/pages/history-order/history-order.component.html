@@ -1,0 +1,47 @@
+<div class="bg-gray-900">
+    <div class="hero min-h-screen">
+        <!--history order for customer-->
+      <div class="relative w-screen max-w-sm border border-gray-600 bg-gray-100 px-4 py-8 sm:px-6 lg:px-8"
+        aria-modal="true" role="dialog" tabindex="-1">
+        <div class="flex justify-center">
+          <p class="absolute text-center items-center top-4 text-gray-600 transition ">
+            order history
+          </p>
+        </div>
+  
+        <div class="mt-4 space-y-6">
+          <ul class="space-y-4">
+            <li class="flex items-center gap-4">
+              <div>
+                <h3 class="text-sm text-gray-900">Name</h3>
+  
+                <dl class="mt-0.5 space-y-px text-[10px] text-gray-600">
+                  <div>
+                    <dt class="inline">Pick up: </dt>
+                    <dd class="inline">pickup location</dd>
+                  </div>
+  
+                  <div>
+                    <dt class="inline">Destination: </dt>
+                    <dd class="inline">destination</dd>
+                  </div>
+                </dl>
+              </div>
+  
+              <div class="flex flex-1 items-center justify-end gap-2">
+                <!--if finish-->
+                <p class="text-green-600 transition hover:scale-110">
+                  finish
+                </p>
+                <!--if canceled-->
+                <p class="text-red-600 transition hover:scale-110">
+                  canceled
+                </p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  

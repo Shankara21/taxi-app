@@ -31,6 +31,9 @@ import { EditUserComponent } from './dashboard/users/edit-user/edit-user.compone
 import { IndexDriverComponent } from './dashboard/drivers/index-driver/index-driver.component';
 import { EditDriverComponent } from './dashboard/drivers/edit-driver/edit-driver.component';
 import { ShowDriverComponent } from './dashboard/drivers/show-driver/show-driver.component';
+import { HistoryOrderComponent } from './pages/history-order/history-order.component';
+import { ProfilesComponent } from './pages/profiles/profiles.component';
+import { EditComponent } from './pages/edit/edit.component';
 
 
 @NgModule({
@@ -58,7 +61,10 @@ import { ShowDriverComponent } from './dashboard/drivers/show-driver/show-driver
     EditUserComponent,
     IndexDriverComponent,
     EditDriverComponent,
-    ShowDriverComponent
+    ShowDriverComponent,
+    HistoryOrderComponent,
+    ProfilesComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,

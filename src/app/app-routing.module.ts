@@ -20,6 +20,10 @@ import { IsAdminGuard } from './services/middleware/is-admin.guard';
 import { ShowDriverComponent } from './dashboard/drivers/show-driver/show-driver.component';
 import { EditDriverComponent } from './dashboard/drivers/edit-driver/edit-driver.component';
 import { IndexDriverComponent } from './dashboard/drivers/index-driver/index-driver.component';
+import { HistoryOrderComponent } from './pages/history-order/history-order.component';
+import { ProfilesComponent } from './pages/profiles/profiles.component';
+import { EditComponent } from './pages/edit/edit.component';
+import { DriverEditComponent } from './pages/edit-driver/edit-driver.component';
 
 const routes: Routes = [
   // Routing untuk authentication
@@ -36,7 +40,10 @@ const routes: Routes = [
   { path: 'reserve', component: ReserveComponent },
   { path: 'order', component: OrderComponent },
   { path: 'status', component: OrderStatusComponent },
-
+  { path: 'history', component: HistoryOrderComponent },
+  { path: 'profile', component: ProfilesComponent },
+  { path: 'profile/edit', component: EditComponent },
+  { path: 'edit', component: DriverEditComponent },
   // Routing untuk dashboard
   {
     path: 'dashboard',

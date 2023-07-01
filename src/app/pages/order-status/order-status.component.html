@@ -4,7 +4,7 @@
     <div class="relative w-screen max-w-sm border border-gray-600 bg-gray-100 px-4 py-8 sm:px-6 lg:px-8"
       aria-modal="true" role="dialog" tabindex="-1">
       <div class="flex justify-center">
-        <p class="absolute text-center items-center top-4 text-gray-600 transition hover:scale-110">
+        <p class="absolute text-center items-center top-4 text-gray-600 transition ">
           order list
         </p>
       </div>
@@ -29,9 +29,14 @@
             </div>
 
             <div class="flex flex-1 items-center justify-end gap-2">
-              <button class="text-gray-600 transition hover:text-green-600">
+              <!--if accept-->
+              <p class="text-green-600 transition hover:scale-110">
                 accept
-              </button>
+              </p>
+              <!--if finding-->
+              <p class="text-indigo-600 transition hover:scale-110">
+                finding driver
+              </p>
             </div>
           </li>
         </ul>
