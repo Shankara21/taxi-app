@@ -18,7 +18,7 @@
           <a
             routerLink="/home"
             routerLinkActive="active"
-            class="block py-2 pl-3 pr-4 text-gray-200 hover:text-blue-500 rounded md:bg-transparent md:p-0"
+            class="block py-2 pl-3 pr-4 text-gray-200 rounded hover:text-blue-500 md:bg-transparent md:p-0"
             aria-current="page"
             >Home
           </a>
@@ -31,7 +31,7 @@
             >About</a
           >
         </li>
-        <li *ngIf="user.role !== 'driver'">
+        <li *ngIf="user && user.role !== 'driver'">
           <a
             routerLink="/driver"
             routerLinkActive="active"
@@ -39,7 +39,7 @@
             >Drive with us</a
           >
         </li>
-        <li *ngIf="user.role !== 'customer'">
+        <li *ngIf="user && user.role !== 'customer'">
           <a
             routerLink="/order"
             routerLinkActive="active"
@@ -47,12 +47,12 @@
             >Order list</a
           >
         </li>
-        <li *ngIf="user.role !== 'driver'">
+        <li *ngIf="user && user.role !== 'driver'">
           <a
             routerLink="/ride"
             routerLinkActive="active"
             class="block py-2 pl-3 pr-4 text-gray-200 rounded hover:bg-blue-100 hover:text-blue-500 md:hover:bg-transparent md:p-0"
-            >Ride with us</a
+            >Ride with us </a
           >
         </li>
       </ul>
@@ -107,17 +107,22 @@
           tabindex="0"
           class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
         >
-          <li class="text-center pt-1 cursor-default select-none">
+          <li class="pt-1 text-center cursor-default select-none">
             Hi, {{ user.name }}
           </li>
-          <div class="divider my-1"></div>
+          <div class="my-1 divider"></div>
           <li *ngIf="user.role === 'admin'">
             <a routerLink="/dashboard"> Dashboard </a>
           </li>
-          <li>
-            <a> Profile </a>
+          <li *ngIf="user.role !== 'admin'">
+            <a
+              routerLink="{{
+                user.role === 'customer' ? '/profile' : '/profile-driver'
+              }}"
+            >
+              Profile
+            </a>
           </li>
-          <li><a>Settings</a></li>
           <li><a (click)="logOut()">Logout</a></li>
         </ul>
         <!-- <ul  tabindex="0"
@@ -126,7 +131,7 @@
             <a>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5"
+                class="w-5 h-5"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -145,7 +150,7 @@
             <a>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5"
+                class="w-5 h-5"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -164,7 +169,7 @@
             <a>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5"
+                class="w-5 h-5"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"

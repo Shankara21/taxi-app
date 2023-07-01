@@ -1,7 +1,7 @@
 <div class="bg-gray-900">
-  <div class="hero min-h-screen">
+  <div class="min-h-screen hero">
     <div
-      class="absolute inset-x-0 z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+      class="absolute inset-x-0 z-10 overflow-hidden transform-gpu blur-3xl sm:-top-80"
       aria-hidden="true"
     >
       <div
@@ -32,41 +32,48 @@
       class="z-50 max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800"
     >
       <h2
-        class="text-lg font-semibold text-gray-700 capitalize dark:text-white"
+        class="mb-3 text-lg font-semibold text-gray-700 capitalize dark:text-white"
       >
         Driver sign up
       </h2>
-
-      <form>
-        <ul class="gap-6 mt-4 sm:grid-cols-2">
+      <div class="alert alert-error" *ngIf="alert">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-6 h-6 stroke-current shrink-0"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+        <span>{{ alertMessage }}</span>
+      </div>
+      <form [formGroup]="form" (submit)="submit()">
+        <ul class="gap-6 mt-3 sm:grid-cols-2">
           <li>
             <label class="text-gray-700 dark:text-gray-200" for="username"
-              >Username</label
+              >Car Plate Number</label
             >
             <input
               id="username"
               type="text"
               class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+              formControlName="carPlateNumber"
             />
           </li>
           <li>
             <label class="text-gray-700 dark:text-gray-200" for="email"
-              >Email Address</label
+              >Driving Lincense Number</label
             >
             <input
               id="emailAddress"
-              type="email"
+              type="text"
               class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-            />
-          </li>
-          <li>
-            <label class="text-gray-700 dark:text-gray-200" for="password"
-              >Password</label
-            >
-            <input
-              id="password"
-              type="password"
-              class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+              formControlName="drivingLicenseNumber"
             />
           </li>
           <li>
@@ -74,18 +81,38 @@
               >Car Photo</label
             >
             <!-- <input id="car" type="file" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"> -->
-            <input type="file" class="file-input file-input-bordered w-full mt-2" />
+            <div class="flex justify-center w-full ">
+              <img
+                src="{{ previewImage }}"
+                alt=""
+                class="my-2 w-64  duration-300 rounded-md cursor-pointer active:bg-gray-300 active:text-black hover:shadow-xl {{
+                  !previewImage && 'hidden'
+                }}"
+              />
+            </div>
+            <input
+              type="file"
+              class="w-full mt-2 file-input file-input-bordered"
+              (change)="processPhoto($event)"
+            />
           </li>
           <li>
             <label class="text-gray-700 dark:text-gray-200" for="car"
               >Capacity</label
             >
-            <input id="capacity" type="number" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
-            <!-- <input type="text" class="file-input file-input-bordered w-full mt-2" /> -->
+            <input
+              id="capacity"
+              type="number"
+              min="0"
+              class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+              formControlName="passengerTotal"
+            />
+            <!-- <input type="text" class="w-full mt-2 file-input file-input-bordered" /> -->
           </li>
         </ul>
         <div class="flex justify-center mt-6">
           <button
+            type="submit"
             class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
           >
             SIGN UP

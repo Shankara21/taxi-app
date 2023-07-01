@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
   constructor(private AuthService: AuthService, private router: Router) { }
   registerForm!: FormGroup;
+  alert: boolean = false;
+  alertMessage: any;
 
   ngOnInit() {
     this.registerForm = new FormGroup({
@@ -23,6 +25,24 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
+    if (this.registerForm.value.password.length < 6) {
+      this.alert = true;
+      this.alertMessage = "Password must be greater than 6 characters";
+      setTimeout(() => {
+        this.alert = false;
+        this.alertMessage = "";
+      }, 2500);
+      return;
+    }
+    if (this.registerForm.value.password !== this.registerForm.value.confirmPassword) {
+      this.alert = true;
+      this.alertMessage = "Passwords do not match";
+      setTimeout(() => {
+        this.alert = false;
+        this.alertMessage = "";
+      }, 2500);
+      return;
+    }
     this.AuthService.Register(this.registerForm.value).subscribe((res: any) => {
       if (res.status === 201) {
         this.AuthService.Login(this.registerForm.value).subscribe((res: any) => {
@@ -30,8 +50,13 @@ export class RegisterComponent implements OnInit {
           this.router.navigateByUrl('/dashboard');
         })
       }
-    }, (err: any) => { 
-      console.log(err)
+    }, (err: any) => {
+      this.alert = true;
+      this.alertMessage = err.error.message;
+      setTimeout(() => {
+        this.alert = false;
+        this.alertMessage = "";
+      }, 2500);
     })
   }
 }

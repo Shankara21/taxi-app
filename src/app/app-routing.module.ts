@@ -25,6 +25,7 @@ import { ProfilesComponent } from './pages/profiles/profiles.component';
 import { EditComponent } from './pages/edit/edit.component';
 import { DriverEditComponent } from './pages/edit-driver/edit-driver.component';
 import { ProfileDriverComponent } from './pages/profile-driver/profile-driver.component';
+import { IsCustomerGuard } from './services/middleware/is-customer.guard';
 
 const routes: Routes = [
   // Routing untuk authentication
@@ -35,7 +36,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'driver', component: DriversComponent },
+  { path: 'driver', component: DriversComponent, canActivate:[AuthGuard,IsCustomerGuard] },
   { path: 'ride', component: RideComponent },
   { path: 'book', component: BookComponent },
   { path: 'reserve', component: ReserveComponent },

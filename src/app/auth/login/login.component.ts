@@ -25,14 +25,26 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    if (this.loginForm.value.password.length < 6) {
+      this.alert = true;
+      this.alertMessage = "Password must be greater than 6 characters";
+      setTimeout(() => {
+        this.alert = false;
+        this.alertMessage = "";
+      }, 2500);
+      return;
+    }
+
     this.AuthService.Login(this.loginForm.value).subscribe((res: any) => {
       this.AuthService.SetToken(res.token);
       this.router.navigateByUrl('/dashboard');
-    }, (err: any) => { 
+    }, (err: any) => {
       this.alert = true;
       this.alertMessage = err.error.message;
-      console.log(err.error.message);
-      
+      setTimeout(() => {
+        this.alert = false;
+        this.alertMessage = "";
+      }, 2500);
     })
   }
 }

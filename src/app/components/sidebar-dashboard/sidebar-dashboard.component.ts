@@ -12,6 +12,6 @@ export class SidebarDashboardComponent {
 
   logout() {
     this.AuthService.DeleteToken();
-    this.router.navigateByUrl('/login');
+    this.router.navigateByUrl('/home');
   }
 }
