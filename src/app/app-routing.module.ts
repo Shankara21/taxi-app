@@ -24,6 +24,7 @@ import { HistoryOrderComponent } from './pages/history-order/history-order.compo
 import { ProfilesComponent } from './pages/profiles/profiles.component';
 import { EditComponent } from './pages/edit/edit.component';
 import { DriverEditComponent } from './pages/edit-driver/edit-driver.component';
+import { ProfileDriverComponent } from './pages/profile-driver/profile-driver.component';
 
 const routes: Routes = [
   // Routing untuk authentication
@@ -43,7 +44,8 @@ const routes: Routes = [
   { path: 'history', component: HistoryOrderComponent },
   { path: 'profile', component: ProfilesComponent },
   { path: 'profile/edit', component: EditComponent },
-  { path: 'edit', component: DriverEditComponent },
+  { path: 'profile-driver', component: ProfileDriverComponent },
+  { path: 'profile-driver/edit', component: DriverEditComponent },
   // Routing untuk dashboard
   {
     path: 'dashboard',
