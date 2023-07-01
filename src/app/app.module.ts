@@ -35,6 +35,7 @@ import { HistoryOrderComponent } from './pages/history-order/history-order.compo
 import { ProfilesComponent } from './pages/profiles/profiles.component';
 import { EditComponent } from './pages/edit/edit.component';
 import { ProfileDriverComponent } from './pages/profile-driver/profile-driver.component';
+import { OngoingComponent } from './pages/ongoing/ongoing.component';
 
 
 @NgModule({
@@ -66,7 +67,8 @@ import { ProfileDriverComponent } from './pages/profile-driver/profile-driver.co
     HistoryOrderComponent,
     ProfilesComponent,
     EditComponent,
-    ProfileDriverComponent
+    ProfileDriverComponent,
+    OngoingComponent
   ],
   imports: [
     BrowserModule,

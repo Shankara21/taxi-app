@@ -25,6 +25,7 @@ import { ProfilesComponent } from './pages/profiles/profiles.component';
 import { EditComponent } from './pages/edit/edit.component';
 import { DriverEditComponent } from './pages/edit-driver/edit-driver.component';
 import { ProfileDriverComponent } from './pages/profile-driver/profile-driver.component';
+import { OngoingComponent } from './pages/ongoing/ongoing.component';
 
 const routes: Routes = [
   // Routing untuk authentication
@@ -46,6 +47,7 @@ const routes: Routes = [
   { path: 'profile/edit', component: EditComponent },
   { path: 'profile-driver', component: ProfileDriverComponent },
   { path: 'profile-driver/edit', component: DriverEditComponent },
+  { path: 'ongoing', component: OngoingComponent},
   // Routing untuk dashboard
   {
     path: 'dashboard',
