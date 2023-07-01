@@ -29,10 +29,10 @@
       ></div>
     </div>
     <section
-      class="z-50 max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800"
+      class="z-50 max-w-4xl p-6 mx-auto bg-gray-800 rounded-md shadow-md"
     >
       <h2
-        class="mb-3 text-lg font-semibold text-gray-700 capitalize dark:text-white"
+        class="mb-3 text-lg font-semibold text-white capitalize"
       >
         Driver sign up
       </h2>
@@ -55,32 +55,32 @@
       <form [formGroup]="form" (submit)="submit()">
         <ul class="gap-6 mt-3 sm:grid-cols-2">
           <li>
-            <label class="text-gray-700 dark:text-gray-200" for="username"
+            <label class="text-gray-200 " for="username"
               >Car Plate Number</label
             >
             <input
               id="username"
               type="text"
-              class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+              class="block w-full px-4 py-2 mt-2 text-gray-300 bg-gray-800 border border-gray-600 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring"
               formControlName="carPlateNumber"
             />
           </li>
           <li>
-            <label class="text-gray-700 dark:text-gray-200" for="email"
+            <label class="text-gray-200 " for="email"
               >Driving Lincense Number</label
             >
             <input
               id="emailAddress"
               type="text"
-              class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+              class="block w-full px-4 py-2 mt-2 text-gray-300 bg-gray-800 border border-gray-600 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring"
               formControlName="drivingLicenseNumber"
             />
           </li>
           <li>
-            <label class="text-gray-700 dark:text-gray-200" for="car"
+            <label class="text-gray-200 " for="car"
               >Car Photo</label
             >
-            <!-- <input id="car" type="file" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"> -->
+            <!-- <input id="car" type="file" class="block w-full px-4 py-2 mt-2 text-gray-300 bg-gray-800 border border-gray-600 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring"> -->
             <div class="flex justify-center w-full ">
               <img
                 src="{{ previewImage }}"
@@ -97,14 +97,14 @@
             />
           </li>
           <li>
-            <label class="text-gray-700 dark:text-gray-200" for="car"
+            <label class="text-gray-200 " for="car"
               >Capacity</label
             >
             <input
               id="capacity"
               type="number"
               min="0"
-              class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+              class="block w-full px-4 py-2 mt-2 text-gray-300 bg-gray-800 border border-gray-600 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring"
               formControlName="passengerTotal"
             />
             <!-- <input type="text" class="w-full mt-2 file-input file-input-bordered" /> -->

@@ -14,6 +14,8 @@ export class ProfileDriverComponent implements OnInit {
   userLoggedIn: any;
   user: any;
 
+  isDetailShown: boolean = false;
+
   ngOnInit() {
     this.userLoggedIn = this.AuthService.GetPayload();
     this.MasterService.showByUserIdDriver(this.userLoggedIn.id).subscribe((res: any) => {

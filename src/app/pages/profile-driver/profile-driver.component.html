@@ -1,10 +1,10 @@
 <!-- component -->
 <div
-  class="flex flex-row items-center justify-center w-full h-screen font-sans bg-gray-900"
+  class="flex flex-row items-center justify-center w-full h-screen font-sans text-gray-100 bg-gray-900"
 >
-  <div class="mx-auto bg-white shadow-xl card w-96 hover:shadow">
+  <div class="max-w-3xl mx-auto shadow-xl bg-slate-800 card hover:shadow">
     <img
-      class="w-32 mx-auto -mt-20 border-8 border-white rounded-full"
+      class="w-32 mx-auto -mt-20 border-8 rounded-full border-slate-700"
       src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
       alt=""
     />
@@ -32,37 +32,111 @@
           Max Capacity : ?
         </p>
       </div> -->
-      
-
 
     <div class="flex flex-col">
       <div class="-m-1.5 overflow-x-auto">
         <div class="p-1.5 min-w-full inline-block align-middle">
+          <div class="flex justify-center text-center tabs">
+            <a
+              class="tab tab-bordered {{ !isDetailShown && 'tab-active' }}"
+              (click)="isDetailShown = false"
+              >Personal Information</a
+            >
+            <a
+              class="tab tab-bordered {{ isDetailShown && 'tab-active' }}"
+              (click)="isDetailShown = true"
+              >Driver Details</a
+            >
+          </div>
           <div class="overflow-hidden">
-            <table class="min-w-full">
+            <table class="min-w-full" *ngIf="!isDetailShown">
               <tbody>
                 <tr>
                   <td
-                    class="px-6 py-4 text-lg font-medium text-gray-800 whitespace-nowrap text-start"
+                    class="px-6 py-3 text-sm font-medium whitespace-nowrap text-start"
                   >
                     Name
                   </td>
                   <td
-                    class="px-6 py-4 text-lg font-bold text-gray-800 text-end whitespace-nowrap"
+                    class="px-6 py-3 text-sm font-bold text-end whitespace-nowrap"
                   >
                     {{ user.User.name }}
                   </td>
                 </tr>
                 <tr>
                   <td
-                    class="px-6 py-4 text-lg font-medium text-gray-800 whitespace-nowrap text-start"
+                    class="px-6 py-3 text-sm font-medium whitespace-nowrap text-start"
                   >
                     Email
                   </td>
                   <td
-                    class="px-6 py-4 text-lg font-bold text-gray-800 text-end whitespace-nowrap"
+                    class="px-6 py-3 text-sm font-bold text-end whitespace-nowrap"
                   >
                     {{ user.User.email }}
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="px-6 py-3 text-sm font-medium whitespace-nowrap text-start"
+                  >
+                    Phone Number
+                  </td>
+                  <td
+                    class="px-6 py-3 text-sm font-bold text-end whitespace-nowrap"
+                  >
+                    {{ user.User.telephone }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table class="min-w-full" *ngIf="isDetailShown">
+              <tbody>
+                <tr>
+                  <td
+                    class="px-6 py-3 text-sm font-medium whitespace-nowrap text-start"
+                  >
+                    Car Plate Number
+                  </td>
+                  <td
+                    class="px-6 py-3 text-sm font-bold text-end whitespace-nowrap"
+                  >
+                    {{ user.carPlateNumber }}
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="px-6 py-3 text-sm font-medium whitespace-nowrap text-start"
+                  >
+                    Driving License Number
+                  </td>
+                  <td
+                    class="px-6 py-3 text-sm font-bold text-end whitespace-nowrap"
+                  >
+                    {{ user.drivingLicenseNumber }}
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="px-6 py-3 text-sm font-medium whitespace-nowrap text-start"
+                  >
+                    Car Capacity
+                  </td>
+                  <td
+                    class="px-6 py-3 text-sm font-bold text-end whitespace-nowrap"
+                  >
+                    {{ user.passengerTotal }} person
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="px-6 py-3 text-sm font-medium whitespace-nowrap text-start"
+                  >
+                    Car Photo
+                  </td>
+                  <td
+                    class="px-6 py-3 text-sm font-bold text-end whitespace-nowrap"
+                  >
+                    <img src="http://localhost:3000/{{ user.carPicture }}" class="rounded-lg w-60" alt="">
                   </td>
                 </tr>
               </tbody>
@@ -71,7 +145,7 @@
         </div>
       </div>
     </div>
-    <hr class="mt-8" />
+    <div class="m-0 divider"></div>
     <div class="flex p-4">
       <div class="w-1/2 text-center">
         <a routerLink="/home">Back</a>
