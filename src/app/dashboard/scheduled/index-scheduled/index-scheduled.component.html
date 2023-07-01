@@ -1,0 +1,111 @@
+<app-navbar-dashboard [breadcrumbs]="breadcrumbData"></app-navbar-dashboard>
+<div class="p-4">
+  <div class="flex justify-between items-center mb-6">
+    <p class="text-5xl font-bold text-[#f4f5f5] text-center p-3">
+      List Drivers
+    </p>
+  </div>
+  <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left text-gray-400">
+      <thead class="text-xs uppercase bg-gray-700 text-gray-400">
+        <tr>
+          <th scope="col" class="px-6 py-3 text-center">No</th>
+          <th scope="col" class="px-6 py-3 text-center">Customer Name</th>
+          <th scope="col" class="px-6 py-3 text-center">Driver Name</th>
+          <th scope="col" class="px-6 py-3 text-center">Pick Up Location</th>
+          <th scope="col" class="px-6 py-3 text-center">Destination</th>
+          <th scope="col" class="px-6 py-3 text-center">Date</th>
+          <th scope="col" class="px-6 py-3 text-center">Action</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="data.length">
+        <tr
+          class="border-b bg-gray-800 border-gray-700"
+          *ngFor="let item of data"
+        >
+          <th
+            scope="row"
+            class="px-6 py-4 font-medium whitespace-nowrap text-white text-center"
+          >
+            {{ item.index }}
+          </th>
+
+          <td class="px-6 py-4 text-center">{{ item.User.name }}</td>
+          <td class="px-6 py-4 text-center" *ngIf="item.DriverDetail; else elseBlock">
+            {{ item.DriverDetail.User.name }}
+          </td>
+          <ng-template #elseBlock>
+            <td class="px-6 py-4 text-center">-</td>
+          </ng-template>
+          <td class="px-6 py-4 text-center">{{ item.setOffLocation }}</td>
+          <td class="px-6 py-4 text-center">
+            {{ item.destinationLocation }}
+          </td>
+          <td class="px-6 py-4 text-center">
+            {{ item.setOffDate | date: "MMMM dd, YYYY HH:mm" }}
+          </td>
+          <td class="px-6 py-4 text-center">
+            <div class="flex gap-4 justify-center items-center">
+              <a
+                routerLink="/dashboard/drivers/{{ item.id }}"
+                class="font-medium hover:underline"
+              >
+                <img
+                  src="/assets/img/eye.png"
+                  class="w-10 hover:rotate-7 duration-300"
+                  alt=""
+                />
+              </a>
+              <a
+                routerLink="/dashboard/drivers/edit/{{ item.id }}"
+                class="font-medium hover:underline"
+              >
+                <img
+                  src="/assets/img/pencil.png"
+                  class="w-10 hover:rotate-7 duration-300"
+                  alt=""
+                />
+              </a>
+              <label for="my_modal_7" (click)="getData(item.id)">
+                <img
+                  src="/assets/img/delete.png"
+                  class="w-10 hover:rotate-7 duration-300 cursor-pointer"
+                  alt=""
+                />
+              </label>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+      <tbody *ngIf="!data.length">
+        <tr class="border-b bg-gray-800 border-gray-700">
+          <td colspan="6" class="px-6 py-4 text-center text-2xl font-semibold">
+            No Data
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Modal Delete -->
+<input type="checkbox" id="my_modal_7" class="modal-toggle" />
+<div class="modal" *ngIf="dataModal">
+  <div class="modal-box bg-[#2a2d3e] text-[#f4f5f5]">
+    <h3 class="text-lg font-bold">Are you sure?</h3>
+    <p class="py-4">This action will delete the user permanently.</p>
+    <div class="flex justify-end gap-4 items-center">
+      <label class="modal-close cursor-pointer" for="my_modal_7">
+        Cancel
+      </label>
+      <label
+        for="my_modal_7"
+        class="px-4 py-2 bg-red-500 rounded-md hover:bg-red-600 cursor-pointer"
+        (click)="deleteData(dataModal.id)"
+      >
+        Delete
+      </label>
+    </div>
+    <label class="modal-backdrop cursor-pointer" for="my_modal_7">Close</label>
+  </div>
+</div>

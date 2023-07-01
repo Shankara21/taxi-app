@@ -27,6 +27,9 @@ import { DriverEditComponent } from './pages/edit-driver/edit-driver.component';
 import { ProfileDriverComponent } from './pages/profile-driver/profile-driver.component';
 import { OngoingComponent } from './pages/ongoing/ongoing.component';
 import { IsCustomerGuard } from './services/middleware/is-customer.guard';
+import { IndexScheduledComponent } from './dashboard/scheduled/index-scheduled/index-scheduled.component';
+import { IndexTransactionsComponent } from './dashboard/transactions/index-transactions/index-transactions.component';
+import { IndexOrdersComponent } from './dashboard/orders/index-orders/index-orders.component';
 
 const routes: Routes = [
   // Routing untuk authentication
@@ -60,6 +63,9 @@ const routes: Routes = [
       { path: 'drivers/edit/:id', component: EditDriverComponent },
       { path: 'users', component: IndexUserComponent },
       { path: 'users/:id', component: EditUserComponent },
+      { path: 'scheduled', component: IndexScheduledComponent },
+      { path: 'transactions', component: IndexTransactionsComponent },
+      { path: 'orders', component: IndexOrdersComponent },
     ],
     canActivate: [AuthGuard, IsAdminGuard]
   },

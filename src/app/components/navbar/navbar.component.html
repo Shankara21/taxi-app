@@ -33,6 +33,14 @@
         </li>
         <li *ngIf="user && user.role !== 'driver'">
           <a
+            routerLink="/history"
+            routerLinkActive="active"
+            class="block py-2 pl-3 pr-4 text-gray-200 rounded hover:text-blue-500 md:hover:bg-transparent md:p-0"
+            >History Order</a
+          >
+        </li>
+        <li *ngIf="user && user.role !== 'driver'">
+          <a
             routerLink="/driver"
             routerLinkActive="active"
             class="block py-2 pl-3 pr-4 text-gray-200 rounded hover:bg-blue-100 hover:text-blue-500 md:hover:bg-transparent md:p-0"
@@ -52,8 +60,8 @@
             routerLink="/ride"
             routerLinkActive="active"
             class="block py-2 pl-3 pr-4 text-gray-200 rounded hover:bg-blue-100 hover:text-blue-500 md:hover:bg-transparent md:p-0"
-            >Ride with us </a
-          >
+            >Ride with us
+          </a>
         </li>
       </ul>
     </div>

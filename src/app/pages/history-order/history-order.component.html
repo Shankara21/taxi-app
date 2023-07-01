@@ -1,47 +1,72 @@
 <div class="bg-gray-900">
-    <div class="hero min-h-screen">
-        <!--history order for customer-->
-      <div class="relative w-screen max-w-sm border border-gray-600 bg-gray-100 px-4 py-8 sm:px-6 lg:px-8"
-        aria-modal="true" role="dialog" tabindex="-1">
-        <div class="flex justify-center">
-          <p class="absolute text-center items-center top-4 text-gray-600 transition ">
-            order history
-          </p>
-        </div>
-  
-        <div class="mt-4 space-y-6">
-          <ul class="space-y-4">
-            <li class="flex items-center gap-4">
-              <div>
-                <h3 class="text-sm text-gray-900">Name</h3>
-  
-                <dl class="mt-0.5 space-y-px text-[10px] text-gray-600">
-                  <div>
-                    <dt class="inline">Pick up: </dt>
-                    <dd class="inline">pickup location</dd>
-                  </div>
-  
-                  <div>
-                    <dt class="inline">Destination: </dt>
-                    <dd class="inline">destination</dd>
-                  </div>
-                </dl>
-              </div>
-  
-              <div class="flex flex-1 items-center justify-end gap-2">
-                <!--if finish-->
-                <p class="text-green-600 transition hover:scale-110">
-                  finish
-                </p>
-                <!--if canceled-->
-                <p class="text-red-600 transition hover:scale-110">
-                  canceled
-                </p>
-              </div>
-            </li>
-          </ul>
-        </div>
+  <div class="hero min-h-screen">
+    <!--history order for customer-->
+    <div
+      class="relative w-screen max-w-3xl border border-slate-600 bg-slate-800 px-4 py-8 sm:px-6 lg:px-8 rounded-lg"
+      aria-modal="true"
+      role="dialog"
+      tabindex="-1"
+    >
+      <!-- <div class="flex justify-center">
+        <p
+          class="absolute text-center items-center top-4 text-gray-100 transition"
+        >
+          order history
+        </p>
+      </div> -->
+      <div class="flex justify-center text-center tabs mt-3 mb-6">
+        <a
+          class="tab tab-bordered {{ isDetailShown && 'tab-active' }}"
+          (click)="isDetailShown = true;isRecently = false;isScheduled = false"
+          >History Order</a
+        >
+        <a
+          class="tab tab-bordered {{ isRecently && 'tab-active' }}"
+          (click)="isDetailShown = false;isRecently = true;isScheduled = false"
+          >Recently Order</a
+        >
+        <a
+          class="tab tab-bordered {{ isScheduled && 'tab-active' }}"
+          (click)="isDetailShown = false;isRecently = false;isScheduled = true"
+          >Scheduled Order</a
+        >
+      </div>
+      <div class="mt-4 space-y-6">
+        <ul class="space-y-4">
+          <li class="flex items-center gap-4">
+            <div>
+              <h3 class="text-sm text-gray-100">Name</h3>
+
+              <dl class="mt-0.5 space-y-px text-[10px] text-gray-300">
+                <div>
+                  <div class="inline">Pick up:</div>
+                  <div class="inline">pickup location</div>
+                </div>
+
+                <div>
+                  <div class="inline">Destination:</div>
+                  <div class="inline">destination</div>
+                </div>
+              </dl>
+            </div>
+
+            <div class="flex flex-1 items-center justify-end gap-2">
+              <!--if finish-->
+              <p
+                class="text-green-600 transition duration-300 cursor-pointer hover:scale-110"
+              >
+                finish
+              </p>
+              <!--if canceled-->
+              <p
+                class="text-red-600 transition duration-300 cursor-pointer hover:scale-110"
+              >
+                canceled
+              </p>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
-  
+</div>

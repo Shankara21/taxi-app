@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./history-order.component.css']
 })
 export class HistoryOrderComponent {
-
+  isDetailShown: boolean = true;
+  isRecently: boolean = false;
+  isScheduled: boolean = false;
 }

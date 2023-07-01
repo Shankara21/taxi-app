@@ -1,58 +1,103 @@
 <div class="bg-gray-900">
-    <div class="min-h-screen hero">
+  <div class="min-h-screen hero">
+    <div
+      class="absolute z-10 overflow-hidden transform-gpu blur-3xl sm:-top-80"
+      aria-hidden="true"
+    >
       <div
-        class="absolute z-10 overflow-hidden transform-gpu blur-3xl sm:-top-80"
-        aria-hidden="true"
-      >
-        <div
-          class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
-          style="
-            clip-path: polygon(
-              74.1% 44.1%,
-              100% 61.6%,
-              97.5% 26.9%,
-              85.5% 0.1%,
-              80.7% 2%,
-              72.5% 32.5%,
-              60.2% 62.4%,
-              52.4% 68.1%,
-              47.5% 58.3%,
-              45.2% 34.5%,
-              27.5% 76.7%,
-              0.1% 64.9%,
-              17.9% 100%,
-              27.6% 76.8%,
-              76.1% 97.7%,
-              74.1% 44.1%
-            );
-          "
-        ></div>
-      </div>
-      <section class="z-50 max-w-4xl p-6 mx-auto bg-gray-800 rounded-md shadow-md">
-        <h2 class="text-lg font-semibold text-white capitalize">Book now!</h2>
-
-        <form>
-            <div class="grid items-center justify-center grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
-                <div>
-                    <label class="text-gray-200" for="username">Pickup location</label>
-                    <input id="pickup" type="text" class="block w-full px-4 py-2 mt-2 text-gray-300 bg-gray-800 border border-gray-600 rounded-md focus:ring-blue-300 focus:ring-opacity-40 focus:border-blue-300 focus:outline-none ">
-                </div>
-
-                <div>
-                    <label class="text-gray-200" for="emailAddress">Destination</label>
-                    <input id="destination" type="text" class="block w-full px-4 py-2 mt-2 text-gray-300 bg-gray-800 border border-gray-600 rounded-md focus:ring-blue-300 focus:ring-opacity-40 focus:border-blue-300 focus:outline-none ">
-                </div>
-
-                <div>
-                    <label class="items-center text-gray-200" for="passwordConfirmation">Number of passenger</label>
-                    <input id="passenger" type="text" class="block w-full px-4 py-2 mt-2 text-gray-300 bg-gray-800 border border-gray-600 rounded-md focus:ring-blue-300 focus:ring-opacity-40 focus:border-blue-300 focus:outline-none ">
-                </div>
-            </div>
-
-            <div class="flex justify-end mt-6">
-                <button class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">Save</button>
-            </div>
-        </form>
-    </section>
+        class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+        style="
+          clip-path: polygon(
+            74.1% 44.1%,
+            100% 61.6%,
+            97.5% 26.9%,
+            85.5% 0.1%,
+            80.7% 2%,
+            72.5% 32.5%,
+            60.2% 62.4%,
+            52.4% 68.1%,
+            47.5% 58.3%,
+            45.2% 34.5%,
+            27.5% 76.7%,
+            0.1% 64.9%,
+            17.9% 100%,
+            27.6% 76.8%,
+            76.1% 97.7%,
+            74.1% 44.1%
+          );
+        "
+      ></div>
     </div>
+    <section
+      class="z-50 max-w-4xl p-6 mx-auto bg-gray-800 rounded-md shadow-md"
+    >
+      <h2 class="text-lg font-semibold text-white capitalize mb-3">
+        Book now!
+      </h2>
+      <div class="alert alert-error" *ngIf="alert">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-6 h-6 stroke-current shrink-0"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+        <span>{{ alertMessage }}</span>
+      </div>
+
+      <form [formGroup]="form" (submit)="submit()">
+        <div
+          class="grid items-center justify-center grid-cols-1 gap-6 mt-3 sm:grid-cols-2"
+        >
+          <div>
+            <label class="text-gray-200" for="username">Pickup location</label>
+            <input
+              formControlName="setOffLocation"
+              id="pickup"
+              type="text"
+              class="block w-full px-4 py-2 mt-2 text-gray-300 bg-gray-800 border border-gray-600 rounded-md focus:ring-blue-300 focus:ring-opacity-40 focus:border-blue-300 focus:outline-none"
+            />
+          </div>
+
+          <div>
+            <label class="text-gray-200" for="emailAddress">Destination</label>
+            <input
+              formControlName="destinationLocation"
+              id="destination"
+              type="text"
+              class="block w-full px-4 py-2 mt-2 text-gray-300 bg-gray-800 border border-gray-600 rounded-md focus:ring-blue-300 focus:ring-opacity-40 focus:border-blue-300 focus:outline-none"
+            />
+          </div>
+
+          <div>
+            <label class="items-center text-gray-200" for="passwordConfirmation"
+              >Number of passenger</label
+            >
+            <input
+              formControlName="numberOfPassenger"
+              id="passenger"
+              type="number"
+              min="0"
+              class="block w-full px-4 py-2 mt-2 text-gray-300 bg-gray-800 border border-gray-600 rounded-md focus:ring-blue-300 focus:ring-opacity-40 focus:border-blue-300 focus:outline-none"
+            />
+          </div>
+        </div>
+
+        <div class="flex justify-end mt-6">
+          <button
+            type="submit"
+            class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
+          >
+            Save
+          </button>
+        </div>
+      </form>
+    </section>
   </div>
+</div>

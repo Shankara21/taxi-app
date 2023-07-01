@@ -36,6 +36,9 @@ import { ProfilesComponent } from './pages/profiles/profiles.component';
 import { EditComponent } from './pages/edit/edit.component';
 import { ProfileDriverComponent } from './pages/profile-driver/profile-driver.component';
 import { OngoingComponent } from './pages/ongoing/ongoing.component';
+import { IndexScheduledComponent } from './dashboard/scheduled/index-scheduled/index-scheduled.component';
+import { IndexTransactionsComponent } from './dashboard/transactions/index-transactions/index-transactions.component';
+import { IndexOrdersComponent } from './dashboard/orders/index-orders/index-orders.component';
 
 
 @NgModule({
@@ -68,7 +71,10 @@ import { OngoingComponent } from './pages/ongoing/ongoing.component';
     ProfilesComponent,
     EditComponent,
     ProfileDriverComponent,
-    OngoingComponent
+    OngoingComponent,
+    IndexScheduledComponent,
+    IndexTransactionsComponent,
+    IndexOrdersComponent
   ],
   imports: [
     BrowserModule,
