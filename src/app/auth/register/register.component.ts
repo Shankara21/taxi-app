@@ -44,12 +44,10 @@ export class RegisterComponent implements OnInit {
       return;
     }
     this.AuthService.Register(this.registerForm.value).subscribe((res: any) => {
-      if (res.status === 201) {
-        this.AuthService.Login(this.registerForm.value).subscribe((res: any) => {
-          this.AuthService.SetToken(res.token);
-          this.router.navigateByUrl('/dashboard');
-        })
-      }
+      this.AuthService.Login(this.registerForm.value).subscribe((res: any) => {
+        this.AuthService.SetToken(res.token);
+        this.router.navigateByUrl('/dashboard');
+      })
     }, (err: any) => {
       this.alert = true;
       this.alertMessage = err.error.message;

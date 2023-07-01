@@ -1,32 +1,83 @@
 <!-- component -->
-<div class="bg-gray-900 font-sans h-screen w-full flex flex-row justify-center items-center">
-    <div class="card w-96 mx-auto bg-white  shadow-xl hover:shadow">
-       <img class="w-32 mx-auto rounded-full -mt-20 border-8 border-white" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="">
-       <!--if not filled null-->
-       <div class="text-center mt-2 text-3xl text-gray-600 font-medium">Name</div>
-       <div class="text-center mt-2 text-gray-600 text-sm">gender</div>
-       <div class="text-center font-normal text-gray-600 text-sm">age</div>
-       <div class="px-6 text-center mt-2 text-gray-600 text-sm">
-         <p>
-           email
-         </p>
-       </div>
-       <div class="px-6 text-center mt-2 text-gray-600 text-sm">
-         <p>
-           phone
-         </p>
-       </div>
-       <hr class="mt-8">
-       <div class="flex p-4">
-         <div class="w-1/2 text-center">
-           <a routerLink="/home">Back</a>
-         </div>
-         <div class="w-0 border border-gray-300">
-           
-         </div>
-         <div class="w-1/2 text-center">
-           <a routerLink="edit">Edit</a>
-         </div>
-       </div>
+<div
+  class="bg-gray-900 font-sans h-screen w-full flex flex-row justify-center items-center"
+>
+  <div class="card w-96 mx-auto bg-slate-800 shadow-xl hover:shadow">
+    <img
+      class="w-32 mx-auto rounded-full -mt-20 border-8 border-slate-700"
+      src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+      alt=""
+    />
+    <!--if not filled null-->
+    <div class="flex flex-col">
+      <div class="-m-1.5 overflow-x-auto">
+        <div class="p-1.5 min-w-full inline-block align-middle">
+          <div class="overflow-hidden">
+            <table class="min-w-full">
+              <tbody>
+                <tr>
+                  <td
+                    class="px-6 py-3 text-sm font-medium whitespace-nowrap text-start"
+                  >
+                    Name
+                  </td>
+                  <td
+                    class="px-6 py-3 text-sm font-bold text-end whitespace-nowrap"
+                  >
+                    {{ user.name }}
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="px-6 py-3 text-sm font-medium whitespace-nowrap text-start"
+                  >
+                    Email
+                  </td>
+                  <td
+                    class="px-6 py-3 text-sm font-bold text-end whitespace-nowrap"
+                  >
+                    {{ user.email }}
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="px-6 py-3 text-sm font-medium whitespace-nowrap text-start"
+                  >
+                    Phone
+                  </td>
+                  <td
+                    class="px-6 py-3 text-sm font-bold text-end whitespace-nowrap"
+                  >
+                    {{ user.telephone }}
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="px-6 py-3 text-sm font-medium whitespace-nowrap text-start"
+                  >
+                    Gender
+                  </td>
+                  <td
+                    class="px-6 py-3 text-sm font-bold text-end whitespace-nowrap"
+                  >
+                    {{ user.gender }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="m-0 divider"></div>
+    <div class="flex p-4">
+      <div class="w-1/2 text-center">
+        <a routerLink="/home">Back</a>
+      </div>
+      <div class="w-0 border border-gray-300"></div>
+      <div class="w-1/2 text-center">
+        <a routerLink="edit">Edit</a>
+      </div>
     </div>
   </div>
+</div>

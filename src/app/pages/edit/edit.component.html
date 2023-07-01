@@ -28,31 +28,60 @@
         "
       ></div>
     </div>
-    <section class="max-w-4xl p-6 mx-auto bg-gray-800 rounded-md shadow-md">
-      <h2 class="text-lg font-semibold text-white capitalize">
+    <section
+      class="max-w-4xl w-96 p-6 mx-auto bg-gray-800 rounded-md shadow-md z-50"
+    >
+      <h2 class="text-lg font-semibold text-white capitalize mb-3">
         Edit User Profile
       </h2>
-
-      <form>
-        <ul class="gap-6 mt-4 sm:grid-cols-2">
+      <div class="alert alert-error" *ngIf="alert">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-6 h-6 stroke-current shrink-0"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+        <span>{{ alertMessage }}</span>
+      </div>
+      <form [formGroup]="form" (submit)="submit()">
+        <ul class="gap-6 mt-3 sm:grid-cols-2">
           <li>
-            <label class="text-gray-200" for="name">Name</label>
+            <label class="text-gray-200" for="name">Name </label>
             <input
               id="name"
               type="text"
               class="block w-full px-4 py-2 mt-2 text-gray-300 bg-gray-800 border border-gray-600 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring"
-              formControlName="email"
+              formControlName="name"
+              [(ngModel)]="form.value.name"
             />
           </li>
           <li>
-            <label class="text-gray-200" for="gender">Gender</label><br />
+            <label class="text-gray-200" for="email">Email</label>
+            <input
+              id="email"
+              type="text"
+              class="block w-full px-4 py-2 mt-2 text-gray-300 bg-gray-800 border border-gray-600 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring"
+              formControlName="email"
+              [(ngModel)]="form.value.email"
+            />
+          </li>
+          <li>
+            <label class="text-gray-200" for="gender">Gender </label><br />
             <div class="form-control">
               <label class="cursor-pointer label">
                 <span class="label-text">Male</span>
                 <input
+                  formControlName="gender"
                   type="radio"
-                  name="radio-10"
                   class="radio checked:bg-red-500"
+                  value="Male"
                 />
               </label>
             </div>
@@ -60,29 +89,33 @@
               <label class="cursor-pointer label">
                 <span class="label-text">Female</span>
                 <input
+                  formControlName="gender"
                   type="radio"
-                  name="radio-10"
                   class="radio checked:bg-blue-500"
+                  value="Female"
                 />
               </label>
             </div>
           </li>
           <li>
-            <label class="text-gray-200" for="password">Age</label>
+            <label class="text-gray-200" for="age">Age </label>
             <input
               id="age"
-              type="text"
+              type="number"
+              min="0"
               class="block w-full px-4 py-2 mt-2 text-gray-300 bg-gray-800 border border-gray-600 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring"
-              formControlName="password"
+              formControlName="age"
+              [(ngModel)]="form.value.age"
             />
           </li>
           <li>
-            <label class="text-gray-200" for="phone">Phone</label>
+            <label class="text-gray-200" for="phone">Phone </label>
             <input
               id="phone"
               type="text"
               class="block w-full px-4 py-2 mt-2 text-gray-300 bg-gray-800 border border-gray-600 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring"
-              formControlName="password"
+              formControlName="telephone"
+              [(ngModel)]="form.value.telephone"
             />
           </li>
         </ul>

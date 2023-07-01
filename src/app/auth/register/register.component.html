@@ -1,11 +1,11 @@
 <div class="bg-gray-900">
   <div class="min-h-screen hero">
     <div
-      class="absolute z-10 overflow-hidden transform-gpu blur-3xl sm:-top-80"
+      class="absolute overflow-hidden transform-gpu blur-3xl sm:-top-80"
       aria-hidden="true"
     >
       <div
-        class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)]"
+        class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
         style="
           clip-path: polygon(
             74.1% 44.1%,
@@ -28,14 +28,8 @@
         "
       ></div>
     </div>
-    <section
-      class="z-50 p-6 mx-auto rounded-md shadow-md w-96"
-    >
-      <h2
-        class="mb-3 text-lg font-semibold text-white capitalize"
-      >
-        Sign up
-      </h2>
+    <section class="z-50 p-6 mx-auto rounded-md shadow-md w-96 bg-gray-800">
+      <h2 class="mb-3 text-lg font-semibold text-white capitalize">Sign up</h2>
       <div class="alert alert-error" *ngIf="alert">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -55,46 +49,38 @@
       <form [formGroup]="registerForm" (submit)="register()">
         <ul class="gap-6 mt-3 sm:grid-cols-2">
           <li>
-            <label class="text-gray-200 " for="username"
-              >Name</label
-            >
+            <label class="text-gray-200" for="username">Name</label>
             <input
               id="username"
               type="text"
-              class="block w-full px-4 py-2 mt-2 text-gray-300 border border-gray-200 rounded-md focus:ring-blue-300 focus:ring-opacity-40 focus:border-blue-300 focus:outline-none focus:ring"
+              class="block w-full px-4 py-2 mt-2 text-gray-300 border border-gray-200 rounded-md focus:ring-blue-300 focus:ring-opacity-40 focus:border-blue-300 focus:outline-none bg-gray-800"
               formControlName="name"
             />
           </li>
           <li>
-            <label class="text-gray-200 " for="email"
-              >Email Address</label
-            >
+            <label class="text-gray-200" for="email">Email Address</label>
             <input
               id="emailAddress"
               type="email"
-              class="block w-full px-4 py-2 mt-2 text-gray-300 border border-gray-200 rounded-md focus:ring-blue-300 focus:ring-opacity-40 focus:border-blue-300 focus:outline-none focus:ring"
+              class="block w-full px-4 py-2 mt-2 text-gray-300 border border-gray-200 rounded-md focus:ring-blue-300 focus:ring-opacity-40 focus:border-blue-300 focus:outline-none bg-gray-800"
               formControlName="email"
             />
           </li>
           <li>
-            <label class="text-gray-200 " for="password"
-              >Password</label
-            >
+            <label class="text-gray-200" for="password">Password</label>
             <input
               id="password"
               type="password"
-              class="block w-full px-4 py-2 mt-2 text-gray-300 border border-gray-200 rounded-md focus:ring-blue-300 focus:ring-opacity-40 focus:border-blue-300 focus:outline-none focus:ring"
+              class="block w-full px-4 py-2 mt-2 text-gray-300 border border-gray-200 rounded-md focus:ring-blue-300 focus:ring-opacity-40 focus:border-blue-300 focus:outline-none bg-gray-800"
               formControlName="password"
             />
           </li>
           <li>
-            <label class="text-gray-200 " for="password"
-              >Confirm Password</label
-            >
+            <label class="text-gray-200" for="password">Confirm Password</label>
             <input
               id="password"
               type="password"
-              class="block w-full px-4 py-2 mt-2 text-gray-300 border border-gray-200 rounded-md focus:ring-blue-300 focus:ring-opacity-40 focus:border-blue-300 focus:outline-none focus:ring"
+              class="block w-full px-4 py-2 mt-2 text-gray-300 border border-gray-200 rounded-md focus:ring-blue-300 focus:ring-opacity-40 focus:border-blue-300 focus:outline-none bg-gray-800"
               formControlName="confirmPassword"
             />
           </li>
@@ -110,7 +96,11 @@
       </form>
       <div class="flex justify-center mt-6">
         <p class="text-gray-200">already have account?</p>
-        <a routerLink="/login" class="text-indigo-300">login</a>
+        <a
+          routerLink="/login"
+          class="text-indigo-300 ml-1.5 hover:text-indigo-500"
+          >login</a
+        >
       </div>
     </section>
   </div>
