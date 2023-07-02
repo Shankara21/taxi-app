@@ -33,6 +33,11 @@ export class EditComponent implements OnInit {
       })
       this.isLoading = false;
     })
+    if (localStorage.getItem('prevUrl')) {
+      console.log(localStorage.getItem('prevUrl'));
+      this.Router.navigateByUrl(localStorage.getItem('prevUrl')!);
+      localStorage.removeItem('prevUrl');
+    }
   }
 
   submit() {
@@ -48,7 +53,9 @@ export class EditComponent implements OnInit {
     console.log(this.form.value);
 
     this.MasterService.updateUser(this.userLogged.id, this.form.value).subscribe((res: any) => {
-      this.Router.navigateByUrl('/profile');
+      this.AuthService.SetToken(res.token);
+      localStorage.setItem('prevUrl', '/profile');
+      window.location.reload();
     }, (err: any) => {
       this.alert = true;
       this.alertMessage = err.error.message;

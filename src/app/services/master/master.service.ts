@@ -56,6 +56,12 @@ export class MasterService {
   deleteOrder(id: any) {
     return this.HttpClient.delete(`${this.apiUrl}/orders/${id}`)
   }
+  showByUserIdOrder(id: any) {
+    return this.HttpClient.get(`${this.apiUrl}/orders/byUserId/${id}`)
+  }
+  cancelingOrder(id: any) { 
+    return this.HttpClient.get(`${this.apiUrl}/orders/cancelingOrder/${id}`)
+  }
 
   // Driver
   getDriver() {

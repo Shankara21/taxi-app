@@ -1,72 +1,453 @@
+<div class="toast toast-top toast-end z-50" *ngIf="alert">
+  <div class="alert alert-error">
+    <div class="flex items-center gap-2">
+      <svg
+        width="25px"
+        height="25px"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 9V14"
+          stroke="#292D32"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M12.0001 21.41H5.94005C2.47005 21.41 1.02005 18.93 2.70005 15.9L5.82006 10.28L8.76006 5.00003C10.5401 1.79003 13.4601 1.79003 15.2401 5.00003L18.1801 10.29L21.3001 15.91C22.9801 18.94 21.5201 21.42 18.0601 21.42H12.0001V21.41Z"
+          stroke="#292D32"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M11.9945 17H12.0035"
+          stroke="#292D32"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+      <span>{{ alertMessage }}</span>
+    </div>
+  </div>
+</div>
+
 <div class="bg-gray-900">
   <div class="hero min-h-screen">
     <!--history order for customer-->
     <div
-      class="relative w-screen max-w-3xl border border-slate-600 bg-slate-800 px-4 py-8 sm:px-6 lg:px-8 rounded-lg"
+      class="relative w-screen max-w-3xl border border-slate-600 bg-slate-800 px-4 pt-4 pb-8 sm:px-6 lg:px-8 rounded-lg max-h-[500px] overflow-y-auto"
       aria-modal="true"
       role="dialog"
       tabindex="-1"
     >
-      <!-- <div class="flex justify-center">
-        <p
-          class="absolute text-center items-center top-4 text-gray-100 transition"
-        >
-          order history
-        </p>
-      </div> -->
-      <div class="flex justify-center text-center tabs mt-3 mb-6">
+      <div class="flex justify-center text-center tabs mb-10 z-50">
         <a
           class="tab tab-bordered {{ isDetailShown && 'tab-active' }}"
-          (click)="isDetailShown = true;isRecently = false;isScheduled = false"
+          (click)="
+            isDetailShown = true; isRecently = false; isScheduled = false
+          "
           >History Order</a
         >
         <a
           class="tab tab-bordered {{ isRecently && 'tab-active' }}"
-          (click)="isDetailShown = false;isRecently = true;isScheduled = false"
+          (click)="
+            isDetailShown = false; isRecently = true; isScheduled = false
+          "
           >Recently Order</a
         >
         <a
           class="tab tab-bordered {{ isScheduled && 'tab-active' }}"
-          (click)="isDetailShown = false;isRecently = false;isScheduled = true"
+          (click)="
+            isDetailShown = false; isRecently = false; isScheduled = true
+          "
           >Scheduled Order</a
         >
       </div>
-      <div class="mt-4 space-y-6">
-        <ul class="space-y-4">
-          <li class="flex items-center gap-4">
-            <div>
-              <h3 class="text-sm text-gray-100">Name</h3>
-
-              <dl class="mt-0.5 space-y-px text-[10px] text-gray-300">
-                <div>
-                  <div class="inline">Pick up:</div>
-                  <div class="inline">pickup location</div>
-                </div>
-
-                <div>
-                  <div class="inline">Destination:</div>
-                  <div class="inline">destination</div>
-                </div>
-              </dl>
+      <div class="mt-4 space-y-6" *ngIf="isDetailShown">
+        <div class="flex flex-col">
+          <div class="-m-1.5 overflow-x-auto">
+            <div class="p-1.5 min-w-full inline-block align-middle">
+              <div class="overflow-hidden">
+                <table class="min-w-full">
+                  <tbody>
+                    <tr
+                      class="border-b border-gray-700"
+                      *ngFor="let item of orders"
+                    >
+                      <td
+                        class="px-6 py-3 text-sm font-medium whitespace-nowrap text-start"
+                        style="width: 90%"
+                      >
+                        <div class="grid grid-cols-2 gap-4">
+                          <div class="">
+                            <p class="text-sm text-gray-600">PickUp Location</p>
+                            <p class="text-lg font-bold">
+                              {{ item.setOffLocation }}
+                            </p>
+                          </div>
+                          <div class="">
+                            <p class="text-sm text-gray-600">Destination</p>
+                            <p class="text-lg font-bold">
+                              {{ item.destinationLocation }}
+                            </p>
+                          </div>
+                          <div class="">
+                            <p class="text-sm text-gray-600">Type</p>
+                            <p class="text-lg font-bold">{{ item.type }}</p>
+                          </div>
+                          <div class="" *ngIf="item.type == 'scheduled'">
+                            <p class="text-sm text-gray-600">Date</p>
+                            <p class="text-lg font-bold">
+                              {{
+                                item.setOffDate | date : "MMMM dd, YYYY hh:mm"
+                              }}
+                            </p>
+                          </div>
+                          <div class="">
+                            <p class="text-sm text-gray-600">Total Passenger</p>
+                            <p class="text-lg font-bold">
+                              {{ item.numberOfPassenger }} Person
+                            </p>
+                          </div>
+                        </div>
+                      </td>
+                      <td
+                        class="px-6 py-3 text-sm font-bold text-end whitespace-nowrap"
+                        style="width: 10%"
+                      >
+                        <div
+                          class="badge gap-2 badge-lg"
+                          [class.badge-info]="item.status == 'open'"
+                          [class.badge-success]="item.status == 'done'"
+                          [class.badge-warning]="item.status == 'picked'"
+                          [class.badge-error]="item.status == 'canceled'"
+                        >
+                          <svg
+                            *ngIf="item.status == 'done'"
+                            width="16px"
+                            height="16px"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <g id="Interface / Check_Big">
+                              <path
+                                id="Vector"
+                                d="M4 12L8.94975 16.9497L19.5572 6.34326"
+                                stroke="#000"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                              />
+                            </g>
+                          </svg>
+                          <svg
+                            *ngIf="item.status == 'open'"
+                            width="16px"
+                            height="16px"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20C12.5523 20 13 20.4477 13 21C13 21.5523 12.5523 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 12.5523 21.5523 13 21 13C20.4477 13 20 12.5523 20 12C20 7.58172 16.4183 4 12 4ZM23.6139 15.2106C24.0499 15.5497 24.1284 16.178 23.7894 16.6139L19.1227 22.6139C18.9485 22.8379 18.6875 22.9773 18.4045 22.9975C18.1216 23.0177 17.8434 22.9167 17.6392 22.7198L15.3059 20.4698C14.9083 20.0865 14.8968 19.4534 15.2802 19.0559C15.6635 18.6583 16.2966 18.6468 16.6941 19.0302L18.2268 20.5081L22.2106 15.3861C22.5497 14.9501 23.178 14.8716 23.6139 15.2106ZM13 6C13 5.44772 12.5523 5 12 5C11.4477 5 11 5.44772 11 6V12C11 12.2652 11.1054 12.5196 11.2929 12.7071L14.2929 15.7071C14.6834 16.0976 15.3166 16.0976 15.7071 15.7071C16.0976 15.3166 16.0976 14.6834 15.7071 14.2929L13 11.5858V6Z"
+                              fill="#000000"
+                            />
+                          </svg>
+                          <svg
+                            *ngIf="item.status == 'picked'"
+                            width="16px"
+                            height="16px"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M16.5264 5.06211C19.1917 7.81864 19.1917 12.2636 16.5264 15.0201L11.7002 20.0001L6.87393 15.0211C4.20869 12.2646 4.20869 7.81964 6.87393 5.06311C8.15004 3.74291 9.88743 3.00019 11.7 3C13.5125 2.99981 15.2501 3.74218 16.5264 5.06211Z"
+                              stroke="#000000"
+                              stroke-width="1.5"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            />
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M14.4301 9.61108C14.4124 11.153 13.1824 12.3901 11.679 12.378C10.1755 12.3659 8.96452 11.1093 8.97036 9.56721C8.9762 8.02514 10.1966 6.77818 11.7001 6.77808C13.2167 6.78744 14.4388 8.05567 14.4301 9.61108Z"
+                              stroke="#000000"
+                              stroke-width="1.5"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            />
+                          </svg>
+                          <svg
+                            *ngIf="item.status == 'canceled'"
+                            fill="#000000"
+                            width="16px"
+                            height="16px"
+                            viewBox="0 0 32 32"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <g
+                              id="Group_30"
+                              data-name="Group 30"
+                              transform="translate(-310.001 -321.695)"
+                            >
+                              <path
+                                id="Path_364"
+                                data-name="Path 364"
+                                d="M326,321.7a16,16,0,1,0,16,16A16,16,0,0,0,326,321.7Zm0,28a12,12,0,1,1,12-12A12,12,0,0,1,326,349.7Z"
+                              />
+                              <rect
+                                id="Rectangle_41"
+                                data-name="Rectangle 41"
+                                width="28.969"
+                                height="4"
+                                transform="translate(314.348 346.523) rotate(-45.001)"
+                              />
+                            </g>
+                          </svg>
+                          {{ item.status }}
+                        </div>
+                      </td>
+                    </tr>
+                    <tr *ngIf="orders.length == 0">
+                      <td
+                        class="px-6 py-3 text-xl font-medium whitespace-nowrap text-center"
+                        style="width: 100%"
+                      >
+                        Tidak ada data
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
-
-            <div class="flex flex-1 items-center justify-end gap-2">
-              <!--if finish-->
-              <p
-                class="text-green-600 transition duration-300 cursor-pointer hover:scale-110"
-              >
-                finish
-              </p>
-              <!--if canceled-->
-              <p
-                class="text-red-600 transition duration-300 cursor-pointer hover:scale-110"
-              >
-                canceled
-              </p>
+          </div>
+        </div>
+      </div>
+      <div class="mt-4 space-y-6" *ngIf="isRecently">
+        <div class="flex flex-col">
+          <div class="-m-1.5 overflow-x-auto">
+            <div class="p-1.5 min-w-full inline-block align-middle">
+              <div class="overflow-hidden">
+                <table class="min-w-full">
+                  <tbody>
+                    <tr
+                      class="border-b border-gray-700"
+                      *ngFor="let item of orderRecently"
+                    >
+                      <td
+                        class="px-6 py-3 text-sm font-medium whitespace-nowrap text-start"
+                        style="width: 90%"
+                      >
+                        <div class="grid grid-cols-2 gap-4">
+                          <div class="">
+                            <p class="text-sm text-gray-600">PickUp Location</p>
+                            <p class="text-lg font-bold">
+                              {{ item.setOffLocation }}
+                            </p>
+                          </div>
+                          <div class="">
+                            <p class="text-sm text-gray-600">Destination</p>
+                            <p class="text-lg font-bold">
+                              {{ item.destinationLocation }}
+                            </p>
+                          </div>
+                          <div class="">
+                            <p class="text-sm text-gray-600">Total Passenger</p>
+                            <p class="text-lg font-bold">
+                              {{ item.numberOfPassenger }} Person
+                            </p>
+                          </div>
+                        </div>
+                      </td>
+                      <td
+                        class="px-6 py-3 text-sm font-bold text-end whitespace-nowrap"
+                        style="width: 10%"
+                      >
+                        <!-- The button to open modal -->
+                        <label
+                          (click)="getDataModal(item.id)"
+                          for="my_modal_recently"
+                          class="btn btn-outline btn-error btn-sm"
+                        >
+                          <div class="flex items-center">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              class="h-4 w-4"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12"
+                              />
+                            </svg>
+                            Cancel
+                          </div>
+                        </label>
+                      </td>
+                    </tr>
+                    <tr *ngIf="orderRecently.length == 0">
+                      <td
+                        class="px-6 py-3 text-xl font-medium whitespace-nowrap text-center"
+                        style="width: 100%"
+                      >
+                        Tidak ada data
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
-          </li>
-        </ul>
+          </div>
+        </div>
+      </div>
+      <div class="mt-4 space-y-6" *ngIf="isScheduled">
+        <div class="flex flex-col">
+          <div class="-m-1.5 overflow-x-auto">
+            <div class="p-1.5 min-w-full inline-block align-middle">
+              <div class="overflow-hidden">
+                <table class="min-w-full">
+                  <tbody>
+                    <tr
+                      class="border-b border-gray-700"
+                      *ngFor="let item of orderScheduled"
+                    >
+                      <td
+                        class="px-6 py-3 text-sm font-medium whitespace-nowrap text-start"
+                        style="width: 90%"
+                      >
+                        <div class="grid grid-cols-2 gap-4">
+                          <div class="">
+                            <p class="text-sm text-gray-600">PickUp Location</p>
+                            <p class="text-lg font-bold">
+                              {{ item.setOffLocation }}
+                            </p>
+                          </div>
+                          <div class="">
+                            <p class="text-sm text-gray-600">Destination</p>
+                            <p class="text-lg font-bold">
+                              {{ item.destinationLocation }}
+                            </p>
+                          </div>
+                          <div class="">
+                            <p class="text-sm text-gray-600">Date</p>
+                            <p class="text-lg font-bold">
+                              {{
+                                item.setOffDate | date : "MMMM dd, YYYY HH:mm"
+                              }}
+                            </p>
+                          </div>
+                          <div class="">
+                            <p class="text-sm text-gray-600">Total Passenger</p>
+                            <p class="text-lg font-bold">
+                              {{ item.numberOfPassenger }} Person
+                            </p>
+                          </div>
+                        </div>
+                      </td>
+                      <td
+                        class="px-6 py-3 text-sm font-bold text-end whitespace-nowrap"
+                        style="width: 10%"
+                      >
+                        <label
+                          (click)="getDataModal(item.id)"
+                          for="my_modal_scheduled"
+                          class="btn btn-outline btn-error btn-sm"
+                        >
+                          <div class="flex items-center">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              class="h-4 w-4"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12"
+                              />
+                            </svg>
+                            Cancel
+                          </div>
+                        </label>
+                      </td>
+                    </tr>
+                    <tr *ngIf="orderScheduled.length == 0">
+                      <td
+                        class="px-6 py-3 text-xl font-medium whitespace-nowrap text-center"
+                        style="width: 100%"
+                      >
+                        Tidak ada data
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+</div>
+
+<!-- Modal Recently Order -->
+<input type="checkbox" id="my_modal_recently" class="modal-toggle" />
+<div class="modal">
+  <div class="modal-box">
+    <h3 class="text-lg font-bold">Are you sure cancel this order?</h3>
+    <div class="flex justify-end gap-3">
+      <label class="btn btn-outline btn-success btn-sm" for="my_modal_recently">
+        No
+      </label>
+      <label
+        class="btn btn-outline btn-error btn-sm"
+        for="my_modal_recently"
+        (click)="cancelOrder(dataModal.id)"
+      >
+        Yes
+      </label>
+    </div>
+  </div>
+  <label class="modal-backdrop cursor-pointer" for="my_modal_recently"
+    >Close</label
+  >
+</div>
+
+<!-- Modal Scheduled Order -->
+<input type="checkbox" id="my_modal_scheduled" class="modal-toggle" />
+<div class="modal">
+  <div class="modal-box">
+    <h3 class="text-lg font-bold">Are you sure cancel this order?</h3>
+    <div class="flex justify-end gap-3">
+      <label class="btn btn-outline btn-success btn-sm" for="my_modal_scheduled">
+        No
+      </label>
+      <label
+        class="btn btn-outline btn-error btn-sm"
+        for="my_modal_scheduled"
+        (click)="cancelOrder(dataModal.id)"
+      >
+        Yes
+      </label>
+    </div>
+  </div>
+  <label class="modal-backdrop cursor-pointer" for="my_modal_scheduled"
+    >Close</label
+  >
 </div>
