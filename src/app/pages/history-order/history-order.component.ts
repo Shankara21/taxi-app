@@ -9,8 +9,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./history-order.component.css']
 })
 export class HistoryOrderComponent implements OnInit {
-  isDetailShown: boolean = true;
-  isRecently: boolean = false;
+  isDetailShown: boolean = false;
+  isRecently: boolean = true;
   isScheduled: boolean = false;
 
   constructor(private Router: Router, private AuthService: AuthService, private MasterService: MasterService) { }

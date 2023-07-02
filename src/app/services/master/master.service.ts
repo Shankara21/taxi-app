@@ -62,6 +62,9 @@ export class MasterService {
   cancelingOrder(id: any) { 
     return this.HttpClient.get(`${this.apiUrl}/orders/cancelingOrder/${id}`)
   }
+  getOrderOpen() { 
+    return this.HttpClient.get(`${this.apiUrl}/orders/isOpen`)
+  }
 
   // Driver
   getDriver() {

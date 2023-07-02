@@ -24,6 +24,7 @@ export class NavbarComponent implements OnInit {
   }
 
   logOut() {
+    window.location.reload();
     this.AuthService.DeleteToken();
     this.Router.navigateByUrl('/login');
   }

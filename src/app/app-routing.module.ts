@@ -30,6 +30,7 @@ import { IsCustomerGuard } from './services/middleware/is-customer.guard';
 import { IndexScheduledComponent } from './dashboard/scheduled/index-scheduled/index-scheduled.component';
 import { IndexTransactionsComponent } from './dashboard/transactions/index-transactions/index-transactions.component';
 import { IndexOrdersComponent } from './dashboard/orders/index-orders/index-orders.component';
+import { IsDriverGuard } from './services/middleware/is-driver.guard';
 
 const routes: Routes = [
   // Routing untuk authentication
@@ -42,16 +43,16 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'driver', component: DriversComponent, canActivate: [AuthGuard, IsCustomerGuard] },
   { path: 'ride', component: RideComponent },
-  { path: 'book', component: BookComponent },
-  { path: 'reserve', component: ReserveComponent },
-  { path: 'order', component: OrderComponent },
-  { path: 'status', component: OrderStatusComponent },
-  { path: 'history', component: HistoryOrderComponent },
-  { path: 'profile', component: ProfilesComponent },
-  { path: 'profile/edit', component: EditComponent },
-  { path: 'profile-driver', component: ProfileDriverComponent },
-  { path: 'profile-driver/edit', component: DriverEditComponent },
-  { path: 'ongoing', component: OngoingComponent },
+  { path: 'book', component: BookComponent , canActivate:[AuthGuard]},
+  { path: 'reserve', component: ReserveComponent, canActivate:[AuthGuard] },
+  { path: 'order', component: OrderComponent, canActivate:[AuthGuard] },
+  { path: 'status', component: OrderStatusComponent, canActivate:[AuthGuard] },
+  { path: 'history', component: HistoryOrderComponent, canActivate:[AuthGuard] },
+  { path: 'profile', component: ProfilesComponent , canActivate:[AuthGuard, IsCustomerGuard]},
+  { path: 'profile/edit', component: EditComponent, canActivate:[AuthGuard, IsCustomerGuard] },
+  { path: 'profile-driver', component: ProfileDriverComponent, canActivate:[AuthGuard, IsDriverGuard] },
+  { path: 'profile-driver/edit', component: DriverEditComponent, canActivate:[AuthGuard, IsDriverGuard] },
+  { path: 'ongoing', component: OngoingComponent, canActivate:[AuthGuard, IsDriverGuard] },
   // Routing untuk dashboard
   {
     path: 'dashboard',

@@ -12,12 +12,12 @@ export class IsDriverGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     const url = state.url;
     this.user = this.AuthService.GetPayload();
-    if (this.user && this.user.role === 'admin') {
+    if (this.user && this.user.role === 'driver') {
       return true;
     } else {
       this.Router.navigateByUrl('/home');
       return false;
     }
   }
-  
+
 }

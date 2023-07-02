@@ -1,89 +1,267 @@
 <div class="bg-gray-900">
   <div class="hero min-h-screen">
-
-    <div class="relative w-screen max-w-sm border border-gray-600 bg-gray-100 px-4 py-8 sm:px-6 lg:px-8"
-      aria-modal="true" role="dialog" tabindex="-1">
-      <div class="flex justify-center">
-        <p class="absolute text-center items-center top-4 text-gray-600 transition hover:scale-110">
+    <div
+      class="relative w-[769px] border border-gray-600 bg-slate-800 rounded-lg px-4 py-8 sm:px-6 lg:px-8"
+      aria-modal="true"
+      role="dialog"
+      tabindex="-1"
+    >
+      <div class="flex justify-center mb-5">
+        <p
+          class="absolute text-3xl font-semibold capitalize text-center items-center top-4 text-gray-100 transition hover:scale-110"
+        >
           order list
         </p>
       </div>
 
-      <div class="mt-4 space-y-6">
-        <ul class="space-y-4">
-          <li class="flex items-center gap-4">
-            <div>
-              <h3 class="text-sm text-gray-900">Name</h3>
-
-              <dl class="mt-0.5 space-y-px text-[10px] text-gray-600">
-                <div>
-                  <dt class="inline">Pick up: </dt>
-                  <dd class="inline">pickup location</dd>
-                </div>
-
-                <div>
-                  <dt class="inline">Destination: </dt>
-                  <dd class="inline">destination</dd>
-                </div>
-              </dl>
+      <div class="flex justify-center text-center tabs mb-10 z-50">
+        <a
+          class="tab tab-bordered {{ !isScheduled && 'tab-active' }}"
+          (click)="isScheduled = false"
+          >History Order</a
+        >
+        <a
+          class="tab tab-bordered {{ isScheduled && 'tab-active' }}"
+          (click)="isScheduled = true"
+          >Recently Order</a
+        >
+      </div>
+      <div class="mt-4 space-y-6" *ngIf="!isScheduled">
+        <div class="flex flex-col">
+          <div class="-m-1.5 overflow-x-auto">
+            <div class="p-1.5 min-w-full inline-block align-middle">
+              <div class="overflow-hidden">
+                <table class="min-w-full">
+                  <tbody>
+                    <tr
+                      class="border-b border-gray-700"
+                      *ngFor="let item of orderInstant"
+                    >
+                      <td
+                        class="px-6 py-3 text-sm font-medium whitespace-nowrap text-start"
+                        style="width: 90%"
+                      >
+                        <div class="mb-3">
+                          <p class="text-sm text-gray-600">Name</p>
+                          <p class="text-2xl">{{ item.User.name }}</p>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                          <div class="">
+                            <p class="text-sm text-gray-600">PickUp Location</p>
+                            <p class="text-lg font-bold">
+                              {{ item.setOffLocation }}
+                            </p>
+                          </div>
+                          <div class="">
+                            <p class="text-sm text-gray-600">Destination</p>
+                            <p class="text-lg font-bold">
+                              {{ item.destinationLocation }}
+                            </p>
+                          </div>
+                          <div class="">
+                            <p class="text-sm text-gray-600">Type</p>
+                            <p class="text-lg font-bold">{{ item.type }}</p>
+                          </div>
+                          <div class="" *ngIf="item.type == 'scheduled'">
+                            <p class="text-sm text-gray-600">Date</p>
+                            <p class="text-lg font-bold">
+                              {{
+                                item.setOffDate | date : "MMMM dd, YYYY hh:mm"
+                              }}
+                            </p>
+                          </div>
+                          <div class="">
+                            <p class="text-sm text-gray-600">Total Passenger</p>
+                            <p class="text-lg font-bold">
+                              {{ item.numberOfPassenger }} Person
+                            </p>
+                          </div>
+                        </div>
+                      </td>
+                      <td
+                        class="px-6 py-3 text-sm font-bold text-end whitespace-nowrap"
+                        style="width: 10%"
+                      >
+                        <label
+                          for="my_modal_recently"
+                          class="btn btn-outline btn-info btn-sm"
+                          (click)="getDataModal(item.id)"
+                        >
+                          <div class="flex items-center gap-2">
+                            <svg
+                              width="16px"
+                              height="16px"
+                              viewBox="0 0 20 20"
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                            >
+                              <path
+                                fill="currentColor"
+                                fill-rule="evenodd"
+                                d="M3 10a7 7 0 019.307-6.611 1 1 0 00.658-1.889 9 9 0 105.98 7.501 1 1 0 00-1.988.22A7 7 0 113 10zm14.75-5.338a1 1 0 00-1.5-1.324l-6.435 7.28-3.183-2.593a1 1 0 00-1.264 1.55l3.929 3.2a1 1 0 001.38-.113l7.072-8z"
+                              />
+                            </svg>
+                            Accept
+                          </div>
+                        </label>
+                      </td>
+                    </tr>
+                    <tr *ngIf="orderInstant.length == 0">
+                      <td
+                        class="px-6 py-3 text-xl font-medium whitespace-nowrap text-center"
+                        style="width: 100%"
+                      >
+                        Tidak ada data
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
-
-            <div class="flex flex-1 items-center justify-end gap-2">
-              <button class="text-gray-600 transition hover:text-green-600">
-                accept
-              </button>
+          </div>
+        </div>
+      </div>
+      <div class="mt-4 space-y-6" *ngIf="isScheduled">
+        <div class="flex flex-col">
+          <div class="-m-1.5 overflow-x-auto">
+            <div class="p-1.5 min-w-full inline-block align-middle">
+              <div class="overflow-hidden">
+                <table class="min-w-full">
+                  <tbody>
+                    <tr
+                      class="border-b border-gray-700"
+                      *ngFor="let item of orderScheduled"
+                    >
+                      <td
+                        class="px-6 py-3 text-sm font-medium whitespace-nowrap text-start"
+                        style="width: 90%"
+                      >
+                        <div class="grid grid-cols-2 gap-4">
+                          <div class="">
+                            <p class="text-sm text-gray-600">PickUp Location</p>
+                            <p class="text-lg font-bold">
+                              {{ item.setOffLocation }}
+                            </p>
+                          </div>
+                          <div class="">
+                            <p class="text-sm text-gray-600">Destination</p>
+                            <p class="text-lg font-bold">
+                              {{ item.destinationLocation }}
+                            </p>
+                          </div>
+                          <div class="">
+                            <p class="text-sm text-gray-600">Type</p>
+                            <p class="text-lg font-bold">{{ item.type }}</p>
+                          </div>
+                          <div class="" *ngIf="item.type == 'scheduled'">
+                            <p class="text-sm text-gray-600">Date</p>
+                            <p class="text-lg font-bold">
+                              {{
+                                item.setOffDate | date : "MMMM dd, YYYY hh:mm"
+                              }}
+                            </p>
+                          </div>
+                          <div class="">
+                            <p class="text-sm text-gray-600">Total Passenger</p>
+                            <p class="text-lg font-bold">
+                              {{ item.numberOfPassenger }} Person
+                            </p>
+                          </div>
+                        </div>
+                      </td>
+                      <td
+                        class="px-6 py-3 text-sm font-bold text-end whitespace-nowrap"
+                        style="width: 10%"
+                      >
+                        <label
+                          for="my_modal_scheduled"
+                          class="btn btn-outline btn-info btn-sm"
+                          (click)="getDataModal(item.id)"
+                        >
+                          <div class="flex items-center gap-2">
+                            <svg
+                              width="16px"
+                              height="16px"
+                              viewBox="0 0 20 20"
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                            >
+                              <path
+                                fill="currentColor"
+                                fill-rule="evenodd"
+                                d="M3 10a7 7 0 019.307-6.611 1 1 0 00.658-1.889 9 9 0 105.98 7.501 1 1 0 00-1.988.22A7 7 0 113 10zm14.75-5.338a1 1 0 00-1.5-1.324l-6.435 7.28-3.183-2.593a1 1 0 00-1.264 1.55l3.929 3.2a1 1 0 001.38-.113l7.072-8z"
+                              />
+                            </svg>
+                            Accept
+                          </div>
+                        </label>
+                      </td>
+                    </tr>
+                    <tr *ngIf="orderScheduled.length == 0">
+                      <td
+                        class="px-6 py-3 text-xl font-medium whitespace-nowrap text-center"
+                        style="width: 100%"
+                      >
+                        Tidak ada data
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
-          </li>
-
-          <li class="flex items-center gap-4">
-            <div>
-              <h3 class="text-sm text-gray-900">Name</h3>
-
-              <dl class="mt-0.5 space-y-px text-[10px] text-gray-600">
-                <div>
-                  <dt class="inline">Pick up: </dt>
-                  <dd class="inline">pickup location</dd>
-                </div>
-
-                <div>
-                  <dt class="inline">Destination: </dt>
-                  <dd class="inline">destination</dd>
-                </div>
-              </dl>
-            </div>
-
-            <div class="flex flex-1 items-center justify-end gap-2">
-              <button class="text-gray-600 transition hover:text-green-600">
-                accept
-              </button>
-            </div>
-          </li>
-
-          <li class="flex items-center gap-4">
-            <div>
-              <h3 class="text-sm text-gray-900">Name</h3>
-
-              <dl class="mt-0.5 space-y-px text-[10px] text-gray-600">
-                <div>
-                  <dt class="inline">Pick up: </dt>
-                  <dd class="inline">pickup location</dd>
-                </div>
-
-                <div>
-                  <dt class="inline">Destination: </dt>
-                  <dd class="inline">destination</dd>
-                </div>
-              </dl>
-            </div>
-
-            <div class="flex flex-1 items-center justify-end gap-2">
-              <button class="text-gray-600 transition hover:text-green-600">
-                accept
-              </button>
-            </div>
-          </li>
-        </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+</div>
+
+<!-- Modal Recently Order -->
+<input type="checkbox" id="my_modal_recently" class="modal-toggle" />
+<div class="modal" *ngIf="dataModal">
+  <div class="modal-box">
+    <h3 class="text-lg font-bold">Are you sure cancel this order?</h3>
+    <div class="text-base">for {{ dataModal.numberOfPassenger }} person</div>
+    <div class="flex justify-end gap-3">
+      <label class="btn btn-outline btn-success btn-sm" for="my_modal_recently">
+        No
+      </label>
+      <label
+        class="btn btn-outline btn-error btn-sm"
+        for="my_modal_recently"
+        (click)="acceptOrder(dataModal.id)"
+      >
+        Yes
+      </label>
+    </div>
+  </div>
+  <label class="modal-backdrop cursor-pointer" for="my_modal_recently"
+    >Close</label
+  >
+</div>
+
+<!-- Modal Scheduled Order -->
+<input type="checkbox" id="my_modal_scheduled" class="modal-toggle" />
+<div class="modal" *ngIf="dataModal">
+  <div class="modal-box">
+    <h3 class="text-lg font-bold">Are you sure cancel this order?</h3>
+    <div class="flex justify-end gap-3">
+      <label
+        class="btn btn-outline btn-success btn-sm"
+        for="my_modal_scheduled"
+      >
+        No
+      </label>
+      <label
+        class="btn btn-outline btn-error btn-sm"
+        for="my_modal_scheduled"
+        (click)="acceptOrder(dataModal.id)"
+      >
+        Yes
+      </label>
+    </div>
+  </div>
+  <label class="modal-backdrop cursor-pointer" for="my_modal_scheduled"
+    >Close</label
+  >
 </div>
