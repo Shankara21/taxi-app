@@ -1,7 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
-import { CookieService } from 'ngx-cookie-service';
 import { DOCUMENT } from '@angular/common';
 
 @Injectable({
@@ -11,7 +10,7 @@ export class AuthService {
 
   private dev = 'http://localhost:3000';
 
-  constructor(private HttpClient: HttpClient, private cookieService: CookieService, @Inject(DOCUMENT) private document: Document) { }
+  constructor(private HttpClient: HttpClient,  @Inject(DOCUMENT) private document: Document) { }
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'

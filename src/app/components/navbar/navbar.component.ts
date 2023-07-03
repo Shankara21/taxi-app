@@ -1,4 +1,4 @@
-import { CookieService } from 'ngx-cookie-service';
+
 import { Router } from '@angular/router';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
@@ -18,7 +18,7 @@ export class NavbarComponent implements OnInit {
   }
 
   user: any
-  constructor(private AuthService: AuthService, private Router: Router, private CookieService:CookieService) { }
+  constructor(private AuthService: AuthService, private Router: Router) { }
 
   ngOnInit() {
     this.user = this.AuthService.GetPayload();
@@ -27,7 +27,6 @@ export class NavbarComponent implements OnInit {
   logOut() {
     this.AuthService.DeleteToken();
     this.Router.navigateByUrl('/login');
-    this.CookieService.deleteAll();
     // window.location.reload();
   }
 

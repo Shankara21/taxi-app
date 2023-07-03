@@ -90,7 +90,6 @@ import { Router } from '@angular/router';
             Landing Page
         </a>
       </li>
-        <li><a class="hover:text-white hover:bg-[#363d51]">Item 2</a></li>
       </ul>
     </div>
   </div>

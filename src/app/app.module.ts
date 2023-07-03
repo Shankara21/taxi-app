@@ -40,6 +40,7 @@ import { IndexScheduledComponent } from './dashboard/scheduled/index-scheduled/i
 import { IndexTransactionsComponent } from './dashboard/transactions/index-transactions/index-transactions.component';
 import { IndexOrdersComponent } from './dashboard/orders/index-orders/index-orders.component';
 import { DriverEditComponent } from './pages/edit-driver/edit-driver.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 
 @NgModule({
@@ -85,6 +86,7 @@ import { DriverEditComponent } from './pages/edit-driver/edit-driver.component';
     FormsModule,
     ReactiveFormsModule,
     NgxPaginationModule,
+    NgApexchartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
