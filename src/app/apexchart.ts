@@ -7,6 +7,12 @@ import {
   ApexLegend
 } from "ng-apexcharts";
 
-export type StatisticChart = {
-  
-}
+export type statisticChart = {
+  series: ApexNonAxisChartSeries;
+  chart: ApexChart;
+  responsive: ApexResponsive[];
+  labels: any;
+  fill: ApexFill;
+  legend: ApexLegend;
+  dataLabels: ApexDataLabels;
+};

@@ -1,6 +1,6 @@
 <app-navbar-dashboard [breadcrumbs]="breadcrumbData"></app-navbar-dashboard>
 <div class="flex max-md:flex-wrap w-full text-[#f4f5f5] gap-4">
-  <div class="md:w-[75%] rounded-lg">
+  <div class="rounded-lg ">
     <p class="my-4 ml-2 text-xl font-semibold">Amount</p>
     <div class="grid w-full grid-cols-2 gap-4 mb-6 md:grid-cols-3">
       <div class="card bg-[#2a2d3e]">
@@ -173,12 +173,15 @@
                         <td
                           class="px-6 py-4 text-sm text-gray-200 whitespace-nowrap"
                         >
-                          <div class="font-semibold badge badge-md"
-                          [class.badge-success]="item.status == 'done'"
-                          [class.badge-warning]="item.status == 'picked'"
-                          [class.badge-error]="item.status == 'canceled'"
-                          [class.badge-info]="item.status == 'open'"
-                          >{{ item.status }}</div>
+                          <div
+                            class="font-semibold badge badge-md"
+                            [class.badge-success]="item.status == 'done'"
+                            [class.badge-warning]="item.status == 'picked'"
+                            [class.badge-error]="item.status == 'canceled'"
+                            [class.badge-info]="item.status == 'open'"
+                          >
+                            {{ item.status }}
+                          </div>
                         </td>
                       </tr>
                       <tr *ngIf="instantOrder.length == 0">
@@ -264,12 +267,15 @@
                         <td
                           class="px-6 py-4 text-sm text-gray-200 whitespace-nowrap"
                         >
-                          <div class="font-semibold badge badge-md"
-                          [class.badge-success]="item.status == 'done'"
-                          [class.badge-warning]="item.status == 'picked'"
-                          [class.badge-error]="item.status == 'canceled'"
-                          [class.badge-info]="item.status == 'open'"
-                          >{{ item.status }}</div>
+                          <div
+                            class="font-semibold badge badge-md"
+                            [class.badge-success]="item.status == 'done'"
+                            [class.badge-warning]="item.status == 'picked'"
+                            [class.badge-error]="item.status == 'canceled'"
+                            [class.badge-info]="item.status == 'open'"
+                          >
+                            {{ item.status }}
+                          </div>
                         </td>
                       </tr>
                       <tr *ngIf="scheduledOrder.length == 0">
@@ -290,7 +296,17 @@
       </div>
     </div>
   </div>
-  <div class="md:w-[25%] bg-[#2a2d3e] rounded-xl">
-    <div class="">content</div>
-  </div>
+  <!-- <div class="md:w-[25%] bg-[#2a2d3e] rounded-xl">
+    <div class="">
+      <apx-chart
+        [series]="statisticChart.series"
+        [chart]="statisticChart.chart"
+        [labels]="statisticChart.labels"
+        [fill]="statisticChart.fill"
+        [dataLabels]="statisticChart.dataLabels"
+        [responsive]="statisticChart.responsive"
+        [stroke]="statisticChart.stroke"
+      ></apx-chart>
+    </div>
+  </div> -->
 </div>
