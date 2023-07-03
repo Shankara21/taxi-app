@@ -1,33 +1,36 @@
-<div class="toast toast-top toast-end z-50" *ngIf="alert">
+<div class="toast toast-top toast-end" *ngIf="alert">
   <div class="alert alert-success">
-    <span class="flex gap-3 items-center">
-      <svg
-        width="30px"
-        height="30px"
+    <span class="flex items-center gap-2"
+      ><svg
+        width="25px"
+        height="25px"
         viewBox="0 0 24 24"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <rect width="24" height="24" />
         <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
-          d="M2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12ZM15.7071 9.29289C16.0976 9.68342 16.0976 10.3166 15.7071 10.7071L12.0243 14.3899C11.4586 14.9556 10.5414 14.9556 9.97568 14.3899L8.29289 12.7071C7.90237 12.3166 7.90237 11.6834 8.29289 11.2929C8.68342 10.9024 9.31658 10.9024 9.70711 11.2929L11 12.5858L14.2929 9.29289C14.6834 8.90237 15.3166 8.90237 15.7071 9.29289Z"
-          fill="#323232"
+          d="M10.5 15.25C10.307 15.2353 10.1276 15.1455 9.99998 15L6.99998 12C6.93314 11.8601 6.91133 11.7029 6.93756 11.55C6.96379 11.3971 7.03676 11.2562 7.14643 11.1465C7.2561 11.0368 7.39707 10.9638 7.54993 10.9376C7.70279 10.9114 7.86003 10.9332 7.99998 11L10.47 13.47L19 5.00004C19.1399 4.9332 19.2972 4.91139 19.45 4.93762C19.6029 4.96385 19.7439 5.03682 19.8535 5.14649C19.9632 5.25616 20.0362 5.39713 20.0624 5.54999C20.0886 5.70286 20.0668 5.86009 20 6.00004L11 15C10.8724 15.1455 10.6929 15.2353 10.5 15.25Z"
+          fill="currentColor"
+        />
+        <path
+          d="M12 21C10.3915 20.9974 8.813 20.5638 7.42891 19.7443C6.04481 18.9247 4.90566 17.7492 4.12999 16.34C3.54037 15.29 3.17596 14.1287 3.05999 12.93C2.87697 11.1721 3.2156 9.39921 4.03363 7.83249C4.85167 6.26578 6.1129 4.9746 7.65999 4.12003C8.71001 3.53041 9.87134 3.166 11.07 3.05003C12.2641 2.92157 13.4719 3.03725 14.62 3.39003C14.7224 3.4105 14.8195 3.45215 14.9049 3.51232C14.9903 3.57248 15.0622 3.64983 15.116 3.73941C15.1698 3.82898 15.2043 3.92881 15.2173 4.03249C15.2302 4.13616 15.2214 4.2414 15.1913 4.34146C15.1612 4.44152 15.1105 4.53419 15.0425 4.61352C14.9745 4.69286 14.8907 4.75712 14.7965 4.80217C14.7022 4.84723 14.5995 4.87209 14.4951 4.87516C14.3907 4.87824 14.2867 4.85946 14.19 4.82003C13.2186 4.52795 12.1987 4.43275 11.19 4.54003C10.193 4.64212 9.22694 4.94485 8.34999 5.43003C7.50512 5.89613 6.75813 6.52088 6.14999 7.27003C5.52385 8.03319 5.05628 8.91361 4.77467 9.85974C4.49307 10.8059 4.40308 11.7987 4.50999 12.78C4.61208 13.777 4.91482 14.7431 5.39999 15.62C5.86609 16.4649 6.49084 17.2119 7.23999 17.82C8.00315 18.4462 8.88357 18.9137 9.8297 19.1953C10.7758 19.4769 11.7686 19.5669 12.75 19.46C13.747 19.3579 14.713 19.0552 15.59 18.57C16.4349 18.1039 17.1818 17.4792 17.79 16.73C18.4161 15.9669 18.8837 15.0864 19.1653 14.1403C19.4469 13.1942 19.5369 12.2014 19.43 11.22C19.4201 11.1169 19.4307 11.0129 19.461 10.9139C19.4914 10.8149 19.5409 10.7228 19.6069 10.643C19.6728 10.5631 19.7538 10.497 19.8453 10.4485C19.9368 10.3999 20.0369 10.3699 20.14 10.36C20.2431 10.3502 20.3471 10.3607 20.4461 10.3911C20.5451 10.4214 20.6372 10.471 20.717 10.5369C20.7969 10.6028 20.863 10.6839 20.9115 10.7753C20.9601 10.8668 20.9901 10.9669 21 11.07C21.1821 12.829 20.842 14.6026 20.0221 16.1695C19.2022 17.7363 17.9389 19.0269 16.39 19.88C15.3288 20.4938 14.1495 20.8755 12.93 21C12.62 21 12.3 21 12 21Z"
+          fill="#000000"
         />
       </svg>
-      {{ alertMessage }}
-    </span>
+      {{ alertMessage }}</span
+    >
   </div>
 </div>
 <app-navbar-dashboard [breadcrumbs]="breadcrumbData"></app-navbar-dashboard>
 <div class="p-4">
-  <div class="flex justify-between items-center mb-6">
-    <p class="text-5xl font-bold text-[#f4f5f5] text-center p-3">List Drivers</p>
+  <div class="flex items-center justify-between mb-6">
+    <p class="text-5xl font-bold text-[#f4f5f5] text-center p-3">
+      List Drivers
+    </p>
   </div>
   <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
     <table class="w-full text-sm text-left text-gray-400">
-      <thead class="text-xs uppercase bg-gray-700 text-gray-400">
+      <thead class="text-xs text-gray-400 uppercase bg-gray-700">
         <tr>
           <th scope="col" class="px-6 py-3 text-center">No</th>
           <th scope="col" class="px-6 py-3 text-center">Name</th>
@@ -39,12 +42,12 @@
       </thead>
       <tbody *ngIf="data.length">
         <tr
-          class="border-b bg-gray-800 border-gray-700"
+          class="bg-gray-800 border-b border-gray-700"
           *ngFor="let item of data"
         >
           <th
             scope="row"
-            class="px-6 py-4 font-medium whitespace-nowrap text-white text-center"
+            class="px-6 py-4 font-medium text-center text-white whitespace-nowrap"
           >
             {{ item.index }}
           </th>
@@ -53,17 +56,23 @@
           <td class="px-6 py-4 text-center">{{ item.email }}</td>
           <td class="px-6 py-4 text-center">{{ item.telephone }}</td>
           <td class="px-6 py-4 text-center">
-            {{ item.isActive ? "Active" : "Inactive" }}
+            <div
+              class="badge {{
+                item.isActive ? 'badge-success' : 'badge-error'
+              }} font-semibold badge-md "
+            >
+              {{ item.isActive ? "Active" : "Inactive" }}
+            </div>
           </td>
           <td class="px-6 py-4 text-center">
-            <div class="flex gap-4 justify-center items-center">
+            <div class="flex items-center justify-center gap-4">
               <a
                 routerLink="/dashboard/drivers/{{ item.id }}"
                 class="font-medium hover:underline"
               >
                 <img
                   src="/assets/img/eye.png"
-                  class="w-10 hover:rotate-7 duration-300"
+                  class="w-10 duration-300 hover:rotate-7"
                   alt=""
                 />
               </a>
@@ -73,14 +82,14 @@
               >
                 <img
                   src="/assets/img/pencil.png"
-                  class="w-10 hover:rotate-7 duration-300"
+                  class="w-10 duration-300 hover:rotate-7"
                   alt=""
                 />
               </a>
               <label for="my_modal_7" (click)="getData(item.id)">
                 <img
                   src="/assets/img/delete.png"
-                  class="w-10 hover:rotate-7 duration-300 cursor-pointer"
+                  class="w-10 duration-300 cursor-pointer hover:rotate-7"
                   alt=""
                 />
               </label>
@@ -89,8 +98,8 @@
         </tr>
       </tbody>
       <tbody *ngIf="!data.length">
-        <tr class="border-b bg-gray-800 border-gray-700">
-          <td colspan="6" class="px-6 py-4 text-center text-2xl font-semibold">
+        <tr class="bg-gray-800 border-b border-gray-700">
+          <td colspan="6" class="px-6 py-4 text-2xl font-semibold text-center">
             No Data
           </td>
         </tr>
@@ -105,18 +114,18 @@
   <div class="modal-box bg-[#2a2d3e] text-[#f4f5f5]">
     <h3 class="text-lg font-bold">Are you sure?</h3>
     <p class="py-4">This action will delete the user permanently.</p>
-    <div class="flex justify-end gap-4 items-center">
-      <label class="modal-close cursor-pointer" for="my_modal_7">
+    <div class="flex items-center justify-end gap-4">
+      <label class="cursor-pointer modal-close" for="my_modal_7">
         Cancel
       </label>
       <label
         for="my_modal_7"
-        class="px-4 py-2 bg-red-500 rounded-md hover:bg-red-600 cursor-pointer"
+        class="px-4 py-2 bg-red-500 rounded-md cursor-pointer hover:bg-red-600"
         (click)="deleteData(dataModal.id)"
       >
         Delete
       </label>
     </div>
-    <label class="modal-backdrop cursor-pointer" for="my_modal_7">Close</label>
+    <label class="cursor-pointer modal-backdrop" for="my_modal_7">Close</label>
   </div>
 </div>

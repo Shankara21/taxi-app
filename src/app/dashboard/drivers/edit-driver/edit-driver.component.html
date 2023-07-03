@@ -1,2 +1,119 @@
-
 <app-navbar-dashboard [breadcrumbs]="breadcrumbData"></app-navbar-dashboard>
+<a
+  routerLink="/dashboard/drivers"
+  class="flex items-center gap-2 px-2 hover:text-[#329af9]"
+>
+  <svg
+    width="25px"
+    height="25px"
+    viewBox="0 0 20 20"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+  >
+    <path
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M13 4l-6 6 6 6"
+    />
+  </svg>
+  Back
+</a>
+<p class="my-3 ml-2 text-3xl font-bold">Edit Driver</p>
+<form [formGroup]="form" (submit)="submit()">
+  <div class="grid grid-cols-2 gap-4">
+    <div class="w-full form-control">
+      <label class="label">
+        <span class="label-text">Name</span>
+      </label>
+      <input
+        type="text"
+        [(ngModel)]="form.value.name"
+        formControlName="name"
+        placeholder="Type here"
+        class="w-full input bg-[#2a2d3e] focus:outline-none focus:ring-1 focus:ring-[#329af9] focus:border-transparent"
+      />
+    </div>
+    <div class="w-full form-control">
+      <label class="label">
+        <span class="label-text">Email</span>
+      </label>
+      <input
+        type="text"
+        formControlName="email"
+        placeholder="Type here"
+        class="w-full input bg-[#2a2d3e] focus:outline-none focus:ring-1 focus:ring-[#329af9] focus:border-transparent"
+      />
+    </div>
+    <div class="w-full form-control">
+      <label class="label">
+        <span class="label-text">Gender</span>
+      </label>
+      <div class="flex w-full justify-evenly">
+        <div class="form-control">
+          <label class="cursor-pointer label">
+            <input
+              type="radio"
+              formControlName="gender"
+              value="Male"
+              class="radio checked:bg-red-500"
+            />
+            <span class="mx-5 label-text">Male</span>
+          </label>
+        </div>
+        <div class="form-control">
+          <label class="cursor-pointer label">
+            <input
+              type="radio"
+              formControlName="gender"
+              value="Female"
+              class="radio checked:bg-blue-500"
+            />
+            <span class="mx-5 label-text">Female</span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="w-full form-control">
+      <label class="label">
+        <span class="label-text">Phone</span>
+      </label>
+      <input
+        type="text"
+        formControlName="telephone"
+        placeholder="Type here"
+        class="w-full input bg-[#2a2d3e] focus:outline-none focus:ring-1 focus:ring-[#329af9] focus:border-transparent"
+      />
+    </div>
+    <div class="w-full form-control">
+      <label class="label">
+        <span class="label-text">Role</span>
+      </label>
+      <select
+        class="w-full select bg-[#2a2d3e] focus:outline-none focus:ring-1 focus:ring-[#329af9] focus:border-transparent"
+        formControlName="role"
+      >
+        <option value="admin">Admin</option>
+        <option value="customer">Customer</option>
+        <option value="driver">Driver</option>
+      </select>
+    </div>
+    <div class="w-full form-control">
+      <label class="label">
+        <span class="label-text">Status</span>
+      </label>
+      <select
+        class="w-full select bg-[#2a2d3e] focus:outline-none focus:ring-1 focus:ring-[#329af9] focus:border-transparent"
+        [(ngModel)]="form.value.isActive"
+        formControlName="isActive"
+      >
+        <option value="true">Active</option>
+        <option value="false">Inactive</option>
+      </select>
+    </div>
+  </div>
+  <div class="flex justify-center my-6">
+    <button class="btn btn-neutral" type="submit">Update Data</button>
+  </div>
+</form>

@@ -17,6 +17,8 @@ export class IndexScheduledComponent implements OnInit{
   alert: boolean = false;
   alertMessage: string = '';
 
+
+
   constructor(private masterService: MasterService) { }
   ngOnInit() {
     this.masterService.getOrder().subscribe((data: any) => {

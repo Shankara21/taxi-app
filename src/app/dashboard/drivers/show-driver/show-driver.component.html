@@ -1,2 +1,172 @@
-
 <app-navbar-dashboard [breadcrumbs]="breadcrumbData"></app-navbar-dashboard>
+<a routerLink="/dashboard/drivers" class="flex items-center gap-2 px-2 hover:text-[#329af9]">
+  <svg
+    width="25px"
+    height="25px"
+    viewBox="0 0 20 20"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+  >
+    <path
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M13 4l-6 6 6 6"
+    />
+  </svg>
+  Back
+</a>
+<div class="flex gap-5 mt-5 justify-evenly">
+  <div class="card bg-[#2a2d3e] w-full p-2 shadow-xl">
+    <p class="p-2 text-2xl font-semibold">Personal Information</p>
+    <div class="flex flex-col">
+      <div class="-m-1.5 overflow-x-auto">
+        <div class="p-1.5 min-w-full inline-block align-middle">
+          <div class="overflow-hidden">
+            <table class="min-w-full divide-y divide-gray-700">
+              <tbody class="divide-y divide-gray-700">
+                <tr>
+                  <td
+                    class="px-6 py-4 text-sm font-medium text-gray-200 whitespace-nowrap"
+                  >
+                    Name
+                  </td>
+                  <td class="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                    :
+                  </td>
+                  <td class="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                    {{ data.User.name }}
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="px-6 py-4 text-sm font-medium text-gray-200 whitespace-nowrap"
+                  >
+                    Email
+                  </td>
+                  <td class="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                    :
+                  </td>
+                  <td class="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                    {{ data.User.email }}
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="px-6 py-4 text-sm font-medium text-gray-200 whitespace-nowrap"
+                  >
+                    Gender
+                  </td>
+                  <td class="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                    :
+                  </td>
+                  <td class="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                    {{ data.User.gender }}
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="px-6 py-4 text-sm font-medium text-gray-200 whitespace-nowrap"
+                  >
+                    Telephone
+                  </td>
+                  <td class="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                    :
+                  </td>
+                  <td class="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                    {{ data.User.telephone }}
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="px-6 py-4 text-sm font-medium text-gray-200 whitespace-nowrap"
+                  >
+                    Age
+                  </td>
+                  <td class="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                    :
+                  </td>
+                  <td class="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                    {{ data.User.age }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card bg-[#2a2d3e] w-full p-2 shadow-xl">
+    <p class="p-2 text-2xl font-semibold">Driver Information</p>
+    <div class="flex flex-col">
+      <div class="-m-1.5 overflow-x-auto">
+        <div class="p-1.5 min-w-full inline-block align-middle">
+          <div class="overflow-hidden">
+            <table class="min-w-full divide-y divide-gray-700">
+              <tbody class="divide-y divide-gray-700">
+                <tr>
+                  <td
+                    class="px-6 py-4 text-sm font-medium text-gray-200 whitespace-nowrap"
+                  >
+                    Car Plate Number
+                  </td>
+                  <td class="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                    :
+                  </td>
+                  <td class="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                    {{ data.carPlateNumber }}
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="px-6 py-4 text-sm font-medium text-gray-200 whitespace-nowrap"
+                  >
+                    Driving License Number
+                  </td>
+                  <td class="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                    :
+                  </td>
+                  <td class="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                    {{ data.drivingLicenseNumber }}
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="px-6 py-4 text-sm font-medium text-gray-200 whitespace-nowrap"
+                  >
+                    Car Capacity
+                  </td>
+                  <td class="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                    :
+                  </td>
+                  <td class="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                    {{ data.passengerTotal }}
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="px-6 py-4 text-sm font-medium text-gray-200 whitespace-nowrap"
+                  >
+                    Car Picture
+                  </td>
+                  <td class="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                    :
+                  </td>
+                  <td class="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                    <img
+                      src="http://localhost:3000{{ data.carPicture }}"
+                      alt=""
+                      class="duration-300 rounded-lg hover:scale-105"
+                    />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
