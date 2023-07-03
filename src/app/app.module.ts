@@ -39,6 +39,7 @@ import { OngoingComponent } from './pages/ongoing/ongoing.component';
 import { IndexScheduledComponent } from './dashboard/scheduled/index-scheduled/index-scheduled.component';
 import { IndexTransactionsComponent } from './dashboard/transactions/index-transactions/index-transactions.component';
 import { IndexOrdersComponent } from './dashboard/orders/index-orders/index-orders.component';
+import { DriverEditComponent } from './pages/edit-driver/edit-driver.component';
 
 
 @NgModule({
@@ -74,7 +75,8 @@ import { IndexOrdersComponent } from './dashboard/orders/index-orders/index-orde
     OngoingComponent,
     IndexScheduledComponent,
     IndexTransactionsComponent,
-    IndexOrdersComponent
+    IndexOrdersComponent,
+    DriverEditComponent,
   ],
   imports: [
     BrowserModule,

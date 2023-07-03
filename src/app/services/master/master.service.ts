@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
-import { environment } from './../../../environtment';
+import { environment } from 'src/environtment';
 
 @Injectable({
   providedIn: 'root'
@@ -47,8 +47,8 @@ export class MasterService {
   storeOrder(data: any) {
     return this.HttpClient.post(`${this.apiUrl}/orders`, data)
   }
-  statusOrder(id: any, data: any) {
-    return this.HttpClient.put(`${this.apiUrl}/orders/status/${id}`, data)
+  finishOrder(id: any) {
+    return this.HttpClient.get(`${this.apiUrl}/orders/status/${id}`)
   }
   pickUpOrder(id: any, data: any) {
     return this.HttpClient.put(`${this.apiUrl}/orders/pickup/${id}`, data)
@@ -59,11 +59,14 @@ export class MasterService {
   showByUserIdOrder(id: any) {
     return this.HttpClient.get(`${this.apiUrl}/orders/byUserId/${id}`)
   }
-  cancelingOrder(id: any) { 
+  cancelingOrder(id: any) {
     return this.HttpClient.get(`${this.apiUrl}/orders/cancelingOrder/${id}`)
   }
-  getOrderOpen() { 
+  getOrderOpen() {
     return this.HttpClient.get(`${this.apiUrl}/orders/isOpen`)
+  }
+  getOrderByStatus(id: any) {
+    return this.HttpClient.get(`${this.apiUrl}/orders/orderByStatus/${id}`)
   }
 
   // Driver

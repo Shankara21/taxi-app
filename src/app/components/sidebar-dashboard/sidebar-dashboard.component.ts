@@ -11,8 +11,8 @@ export class SidebarDashboardComponent {
   constructor(public router: Router, private AuthService: AuthService) { }
 
   logout() {
-    window.location.reload();
     this.AuthService.DeleteToken();
     this.router.navigateByUrl('/home');
+    window.location.reload();
   }
 }

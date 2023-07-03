@@ -1,6 +1,6 @@
 <div class="bg-gray-900">
-    <div class="min-h-screen hero">
-        <div class="absolute overflow-hidden transform-gpu blur-3xl sm:-top-80" aria-hidden="true">
+  <div class="h-screen overflow-y-auto hero">
+    <!-- <div class="absolute overflow-hidden transform-gpu blur-3xl sm:-top-80" aria-hidden="true">
             <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
                 style="
             clip-path: polygon(
@@ -22,55 +22,150 @@
               74.1% 44.1%
             );
           "></div>
+        </div> -->
+    <section
+      class="w-full max-w-2xl p-6 mx-auto bg-gray-800 rounded-md shadow-md"
+    >
+      <h2 class="text-lg font-semibold text-center text-white capitalize">
+        Edit Driver
+      </h2>
+      <div class="z-50 flex justify-center mb-10 text-center tabs">
+        <a
+          class="tab tab-bordered {{ !isDetail && 'tab-active' }}"
+          (click)="isDetail = false"
+          >Profile</a
+        >
+        <a
+          class="tab tab-bordered {{ isDetail && 'tab-active' }}"
+          (click)="isDetail = true"
+          >Details</a
+        >
+      </div>
+      <form [formGroup]="form" (submit)="submit()">
+        <div class="grid grid-cols-2 gap-6 mt-4" *ngIf="!isDetail">
+          <div>
+            <label class="text-gray-200" for="name">Name</label>
+            <input
+              id="name"
+              [(ngModel)]="form.value.name"
+              formControlName="name"
+              type="text"
+              class="block w-full px-4 py-2 mt-2 text-gray-300 bg-gray-800 border border-gray-600 rounded-md focus:ring-blue-300 focus:ring-opacity-40 focus:border-blue-300 focus:outline-none focus:ring"
+            />
+          </div>
+          <div class="">
+            <label class="text-gray-200" for="gender">Gender</label><br />
+            <div class="flex justify-evenly">
+              <div class="form-control">
+                <label class="cursor-pointer label">
+                  <span class="mr-4 label-text">Male</span>
+                  <input
+                    type="radio"
+                    value="Male"
+                    formControlName="gender"
+                    class="radio checked:bg-red-500"
+                  />
+                </label>
+              </div>
+              <div class="form-control">
+                <label class="cursor-pointer label">
+                  <span class="mr-4 label-text">Female</span>
+                  <input
+                    type="radio"
+                    formControlName="gender"
+                    class="radio checked:bg-blue-500"
+                    value="Female"
+                  />
+                </label>
+              </div>
+            </div>
+          </div>
+          <div>
+            <label class="text-gray-200" for="password">Email</label>
+            <input
+              id="age"
+              type="text"
+              formControlName="email"
+              class="block w-full px-4 py-2 mt-2 text-gray-300 bg-gray-800 border border-gray-600 rounded-md focus:ring-blue-300 focus:ring-opacity-40 focus:border-blue-300 focus:outline-none focus:ring"
+            />
+          </div>
+          <div>
+            <label class="text-gray-200" for="password">Age</label>
+            <input
+              id="age"
+              type="number"
+              min="0"
+              formControlName="age"
+              class="block w-full px-4 py-2 mt-2 text-gray-300 bg-gray-800 border border-gray-600 rounded-md focus:ring-blue-300 focus:ring-opacity-40 focus:border-blue-300 focus:outline-none focus:ring"
+            />
+          </div>
+          <div>
+            <label class="text-gray-200" for="phone">Phone</label>
+            <input
+              id="phone"
+              type="text"
+              formControlName="telephone"
+              class="block w-full px-4 py-2 mt-2 text-gray-300 bg-gray-800 border border-gray-600 rounded-md focus:ring-blue-300 focus:ring-opacity-40 focus:border-blue-300 focus:outline-none focus:ring"
+            />
+          </div>
         </div>
-        <section class="max-w-4xl p-6 mx-auto bg-gray-800 rounded-md shadow-md">
-            <h2 class="text-lg font-semibold text-white capitalize">
-                Edit Driver Profile
-            </h2>
+        <div class="grid grid-cols-2 gap-6 mt-4" *ngIf="isDetail">
+          <div>
+            <label class="text-gray-200" for="name">Car Plate Number</label>
+            <input
+              id="name"
+              formControlName="carPlateNumber"
+              type="text"
+              class="block w-full px-4 py-2 mt-2 text-gray-300 bg-gray-800 border border-gray-600 rounded-md focus:ring-blue-300 focus:ring-opacity-40 focus:border-blue-300 focus:outline-none focus:ring"
+            />
+          </div>
+          <div>
+            <label class="text-gray-200" for="name"
+              >Driving License Number</label
+            >
+            <input
+              id="name"
+              formControlName="drivingLicenseNumber"
+              type="text"
+              class="block w-full px-4 py-2 mt-2 text-gray-300 bg-gray-800 border border-gray-600 rounded-md focus:ring-blue-300 focus:ring-opacity-40 focus:border-blue-300 focus:outline-none focus:ring"
+            />
+          </div>
+          <div>
+            <label class="text-gray-200" for="password">Total Capacity</label>
+            <input
+              id="age"
+              type="number"
+              min="0"
+              formControlName="passengerTotal"
+              class="block w-full px-4 py-2 mt-2 text-gray-300 bg-gray-800 border border-gray-600 rounded-md focus:ring-blue-300 focus:ring-opacity-40 focus:border-blue-300 focus:outline-none focus:ring"
+            />
+          </div>
 
-            <form>
-                <ul class="gap-6 mt-4 sm:grid-cols-2">
-                    <li>
-                        <label class="text-gray-200 " for="name">Name</label>
-                        <input id="name" type="text"
-                            class="block w-full px-4 py-2 mt-2 text-gray-300 bg-gray-800 border border-gray-600 rounded-md focus:ring-blue-300 focus:ring-opacity-40 focus:border-blue-300 focus:outline-none focus:ring"
-                            formControlName="email" />
-                    </li>
-                    <li>
-                        <label class="text-gray-200 " for="gender">Gender</label><br>
-                        <div class="form-control">
-                            <label class="cursor-pointer label">
-                              <span class="label-text">Male</span> 
-                              <input type="radio" name="radio-10" class="radio checked:bg-red-500" checked />
-                            </label>
-                          </div>
-                          <div class="form-control">
-                            <label class="cursor-pointer label">
-                              <span class="label-text">Female</span> 
-                              <input type="radio" name="radio-10" class="radio checked:bg-blue-500" checked />
-                            </label>
-                          </div>
-                    </li>
-                    <li>
-                        <label class="text-gray-200 " for="password">Age</label>
-                        <input id="age" type="text"
-                            class="block w-full px-4 py-2 mt-2 text-gray-300 bg-gray-800 border border-gray-600 rounded-md focus:ring-blue-300 focus:ring-opacity-40 focus:border-blue-300 focus:outline-none focus:ring"
-                            formControlName="password" />
-                    </li>
-                    <li>
-                        <label class="text-gray-200 " for="phone">Phone</label>
-                        <input id="phone" type="text"
-                            class="block w-full px-4 py-2 mt-2 text-gray-300 bg-gray-800 border border-gray-600 rounded-md focus:ring-blue-300 focus:ring-opacity-40 focus:border-blue-300 focus:outline-none focus:ring"
-                            formControlName="password" />
-                    </li>
-                </ul>
-                <div class="flex justify-center mt-6">
-                    <button type="submit"
-                        class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
-                        Save
-                    </button>
-                </div>
-            </form>
-        </section>
-    </div>
+          <div>
+            <label class="text-gray-200" for="phone">Car Picture</label>
+            <div class="flex justify-center w-full my-4" *ngIf="previewImage">
+              <img
+                src="{{ previewImage }}"
+                class="w-[200px] rounded-lg"
+                alt=""
+              />
+            </div>
+            <input
+              type="file"
+              (change)="processPhoto($event)"
+              class="w-full mt-2 file-input file-input-bordered"
+            />
+          </div>
+        </div>
+        <div class="flex justify-center mt-6">
+          <button
+            type="submit"
+            class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
+          >
+            Save
+          </button>
+        </div>
+      </form>
+    </section>
+  </div>
 </div>

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AuthService } from './../../services/auth/auth.service';
 import { MasterService } from 'src/app/services/master/master.service';
 import { Component, OnInit } from '@angular/core';
@@ -9,9 +10,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderComponent implements OnInit {
 
-  isScheduled: boolean = false;
-  constructor(private MasterService: MasterService, private AuthService: AuthService) { }
+  constructor(private MasterService: MasterService, private AuthService: AuthService, private Router: Router) { }
   orderInstant: any;
+  isScheduled: boolean = false;
   orderScheduled: any;
   dataModal: any;
   userLogged: any;
@@ -36,15 +37,19 @@ export class OrderComponent implements OnInit {
     this.MasterService.showOrder(id).subscribe((res: any) => {
       dataOrder = res;
       this.MasterService.showByUserIdDriver(this.userLogged.id).subscribe((res: any) => {
-        console.log(res);
-        console.log(dataOrder);
-        if (dataOrder.numberOfPassenger > res.passengerTotal){
+        if (dataOrder.numberOfPassenger > res.passengerTotal) {
           this.alert = true;
-          this.alertMessage = 'Kursi tidak mencukupi';
+          this.alertMessage = 'Your capacity is not enough';
+          setTimeout(() => {
+            this.alert = false;
+            this.alertMessage = '';
+          }, 2500);
           return;
         }
       })
-
+    })
+    this.MasterService.pickUpOrder(id, { driverId: this.userLogged.id }).subscribe((res: any) => {
+      this.Router.navigateByUrl('/pickup');
     })
   }
 

@@ -1,20 +1,56 @@
+<div class="z-50 toast toast-top toast-end" *ngIf="alert">
+  <div class="alert alert-error">
+    <div class="flex items-center gap-2">
+      <svg
+        width="25px"
+        height="25px"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 9V14"
+          stroke="#292D32"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M12.0001 21.41H5.94005C2.47005 21.41 1.02005 18.93 2.70005 15.9L5.82006 10.28L8.76006 5.00003C10.5401 1.79003 13.4601 1.79003 15.2401 5.00003L18.1801 10.29L21.3001 15.91C22.9801 18.94 21.5201 21.42 18.0601 21.42H12.0001V21.41Z"
+          stroke="#292D32"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M11.9945 17H12.0035"
+          stroke="#292D32"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+      <span>{{ alertMessage }}</span>
+    </div>
+  </div>
+</div>
 <div class="bg-gray-900">
-  <div class="hero min-h-screen">
+  <div class="min-h-screen hero">
     <div
-      class="relative w-[769px] border border-gray-600 bg-slate-800 rounded-lg px-4 py-8 sm:px-6 lg:px-8"
+      class="max-h-[450px] w-[769px] border border-gray-600 bg-slate-800 rounded-lg px-4 py-8 sm:px-6 lg:px-8"
       aria-modal="true"
       role="dialog"
       tabindex="-1"
     >
       <div class="flex justify-center mb-5">
         <p
-          class="absolute text-3xl font-semibold capitalize text-center items-center top-4 text-gray-100 transition hover:scale-110"
+          class="items-center text-3xl font-semibold text-center text-gray-100 capitalize transition top-4 hover:scale-110"
         >
           order list
         </p>
       </div>
 
-      <div class="flex justify-center text-center tabs mb-10 z-50">
+      <div class="z-50 flex justify-center mb-10 text-center tabs">
         <a
           class="tab tab-bordered {{ !isScheduled && 'tab-active' }}"
           (click)="isScheduled = false"
@@ -108,7 +144,7 @@
                     </tr>
                     <tr *ngIf="orderInstant.length == 0">
                       <td
-                        class="px-6 py-3 text-xl font-medium whitespace-nowrap text-center"
+                        class="px-6 py-3 text-xl font-medium text-center whitespace-nowrap"
                         style="width: 100%"
                       >
                         Tidak ada data
@@ -136,6 +172,10 @@
                         class="px-6 py-3 text-sm font-medium whitespace-nowrap text-start"
                         style="width: 90%"
                       >
+                        <div class="mb-3">
+                          <p class="text-sm text-gray-600">Name</p>
+                          <p class="text-2xl">{{ item.User.name }}</p>
+                        </div>
                         <div class="grid grid-cols-2 gap-4">
                           <div class="">
                             <p class="text-sm text-gray-600">PickUp Location</p>
@@ -199,7 +239,7 @@
                     </tr>
                     <tr *ngIf="orderScheduled.length == 0">
                       <td
-                        class="px-6 py-3 text-xl font-medium whitespace-nowrap text-center"
+                        class="px-6 py-3 text-xl font-medium text-center whitespace-nowrap"
                         style="width: 100%"
                       >
                         Tidak ada data
@@ -220,14 +260,13 @@
 <input type="checkbox" id="my_modal_recently" class="modal-toggle" />
 <div class="modal" *ngIf="dataModal">
   <div class="modal-box">
-    <h3 class="text-lg font-bold">Are you sure cancel this order?</h3>
-    <div class="text-base">for {{ dataModal.numberOfPassenger }} person</div>
+    <h3 class="text-lg font-bold">Are you sure accept this order?</h3>
     <div class="flex justify-end gap-3">
-      <label class="btn btn-outline btn-success btn-sm" for="my_modal_recently">
+      <label class="btn btn-outline btn-error btn-sm" for="my_modal_recently">
         No
       </label>
       <label
-        class="btn btn-outline btn-error btn-sm"
+        class="btn btn-outline btn-success btn-sm"
         for="my_modal_recently"
         (click)="acceptOrder(dataModal.id)"
       >
@@ -235,7 +274,7 @@
       </label>
     </div>
   </div>
-  <label class="modal-backdrop cursor-pointer" for="my_modal_recently"
+  <label class="cursor-pointer modal-backdrop" for="my_modal_recently"
     >Close</label
   >
 </div>
@@ -244,16 +283,16 @@
 <input type="checkbox" id="my_modal_scheduled" class="modal-toggle" />
 <div class="modal" *ngIf="dataModal">
   <div class="modal-box">
-    <h3 class="text-lg font-bold">Are you sure cancel this order?</h3>
+    <h3 class="text-lg font-bold">Are you sure accept this order?</h3>
     <div class="flex justify-end gap-3">
       <label
-        class="btn btn-outline btn-success btn-sm"
+        class="btn btn-outline btn-error btn-sm"
         for="my_modal_scheduled"
       >
         No
       </label>
       <label
-        class="btn btn-outline btn-error btn-sm"
+        class="btn btn-outline btn-success btn-sm"
         for="my_modal_scheduled"
         (click)="acceptOrder(dataModal.id)"
       >
@@ -261,7 +300,7 @@
       </label>
     </div>
   </div>
-  <label class="modal-backdrop cursor-pointer" for="my_modal_scheduled"
+  <label class="cursor-pointer modal-backdrop" for="my_modal_scheduled"
     >Close</label
   >
 </div>

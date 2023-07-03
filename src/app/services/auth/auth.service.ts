@@ -29,22 +29,20 @@ export class AuthService {
 
   // SetToken
   SetToken(token: string) {
-    this.cookieService.delete('TaxiApps');
-    this.cookieService.set('TaxiApps', token, 8 / 24);
+    // this.cookieService.delete('TaxiApps');
+    // this.cookieService.set('TaxiApps', token, 8 / 24);
+    localStorage.setItem('TaxiApps', token);
   }
   // GetToken
   GetToken() {
-    return this.cookieService.get('TaxiApps');
+    return localStorage.getItem('TaxiApps');
   }
 
-  // Refresh Token
-  RefreshToken() {
-    this.cookieService.set('TaxiApps', this.GetToken(), 8 / 24);
-  }
 
   // DeleteToken
   DeleteToken() {
-    this.cookieService.delete('TaxiApps');
+    localStorage.removeItem('TaxiApps');
+    window.location.reload();
   }
 
   // GetPayload

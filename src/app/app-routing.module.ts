@@ -46,7 +46,7 @@ const routes: Routes = [
   { path: 'book', component: BookComponent , canActivate:[AuthGuard]},
   { path: 'reserve', component: ReserveComponent, canActivate:[AuthGuard] },
   { path: 'order', component: OrderComponent, canActivate:[AuthGuard] },
-  { path: 'status', component: OrderStatusComponent, canActivate:[AuthGuard] },
+  { path: 'pickup', component: OrderStatusComponent, canActivate:[AuthGuard] },
   { path: 'history', component: HistoryOrderComponent, canActivate:[AuthGuard] },
   { path: 'profile', component: ProfilesComponent , canActivate:[AuthGuard, IsCustomerGuard]},
   { path: 'profile/edit', component: EditComponent, canActivate:[AuthGuard, IsCustomerGuard] },
