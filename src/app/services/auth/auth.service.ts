@@ -8,7 +8,7 @@ import { DOCUMENT } from '@angular/common';
 })
 export class AuthService {
 
-  private dev = 'http://localhost:3000';
+  private dev = 'http://localhost:3001';
 
   constructor(private HttpClient: HttpClient,  @Inject(DOCUMENT) private document: Document) { }
   httpOptions = {
